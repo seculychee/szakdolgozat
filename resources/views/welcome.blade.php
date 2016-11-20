@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Üdvözöljük </title>
+    <title> {{trans('welcome.Welcome Message')}} </title>
     @include('layouts.matecss')
     <meta charset="UTF-8">
 </head>
@@ -12,36 +12,36 @@
         <li>
             <img src="picture/3.jpg"> <!-- random image -->
             <div class="caption center-align">
-                <h3>Fedezze fel az önben rejl? er?t!</h3>
-                <h5 class="light grey-text text-lighten-3">Személyi edz?ink mindig rendelkezésére állnak.</h5>
+                <h3>Fedezze fel az ï¿½nben rejl? er?t!</h3>
+                <h5 class="light grey-text text-lighten-3">Szemï¿½lyi edz?ink mindig rendelkezï¿½sï¿½re ï¿½llnak.</h5>
             </div>
         </li>
         <li>
             <img src="picture/7.jpg"> <!-- random image -->
             <div class="caption left-align">
                 <h3>Mindig fitten tarjuk!</h3>
-                <h5 class="light grey-text text-lighten-3">Több mint 100 eszköz áll rendelkezésére nálunk amivel fejlesztheti izomzatát.</h5>
+                <h5 class="light grey-text text-lighten-3">Tï¿½bb mint 100 eszkï¿½z ï¿½ll rendelkezï¿½sï¿½re nï¿½lunk amivel fejlesztheti izomzatï¿½t.</h5>
             </div>
         </li>
         <li>
             <img src="picture/2.jpg"> <!-- random image -->
             <div class="caption right-align">
-                <h3>Edzen velünk!</h3>
-                <h5 class="light grey-text text-lighten-3">Akár személyi edz? akár csapatban való részvetlre is szeretettel várjuk.</h5>
+                <h3>Edzen velï¿½nk!</h3>
+                <h5 class="light grey-text text-lighten-3">Akï¿½r szemï¿½lyi edz? akï¿½r csapatban valï¿½ rï¿½szvetlre is szeretettel vï¿½rjuk.</h5>
             </div>
         </li>
         <li>
             <img src="picture/6.jpg"> <!-- random image -->
             <div class="caption center-align">
-                <h3>Csatlakozzon ön is hozzánk!</h3>
-                <h5 class="light grey-text text-lighten-3">Bérlet vásárlás esetén edz?ink órárira iratkozhat.</h5>
+                <h3>Csatlakozzon ï¿½n is hozzï¿½nk!</h3>
+                <h5 class="light grey-text text-lighten-3">Bï¿½rlet vï¿½sï¿½rlï¿½s esetï¿½n edz?ink ï¿½rï¿½rira iratkozhat.</h5>
             </div>
         </li>
     </ul>
 </div>
 
 <div>
-    <h5 class="center-align">Üdvözöljük nálunk</h5>
+    <h5 class="center-align">{!! trans('Welcome.Message') !!}</h5>
 </div>
 
 

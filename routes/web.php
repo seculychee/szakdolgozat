@@ -5,9 +5,9 @@
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Irányító központ címezés szerint
-| get --> URL helyére begépelt string esetén hova irányítson , mit csináljon
-| post --> egy adott kérés továbbítása a megadott honlapról
+| Irï¿½nyï¿½tï¿½ kï¿½zpont cï¿½mezï¿½s szerint
+| get --> URL helyï¿½re begï¿½pelt string esetï¿½n hova irï¿½nyï¿½tson , mit csinï¿½ljon
+| post --> egy adott kï¿½rï¿½s tovï¿½bbï¿½tï¿½sa a megadott honlaprï¿½l
 |
 */
 
@@ -23,10 +23,16 @@ Route::get('login', function () {
 //regist
 Route::get('regist', function () {
     return view('pages.test');
-});
-// átmenetileg minden gombra a login a regisztrációs felületre ugrik késöbbiekbe javítani kell
+})->name("regGet");
+// ï¿½tmenetileg minden gombra a login a regisztrï¿½ciï¿½s felï¿½letre ugrik kï¿½sï¿½bbiekbe javï¿½tani kell
 Route::post('login', function () {
     return view('pages.test');
+});
+Route::post('/regisztracio','contactController@regStart')->name('reg');
+
+// Only redirect when user has a authenticated
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('adatlap','contactController@getDatas')->name('getContactData');
 });
 
 
