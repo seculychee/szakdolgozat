@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> {{trans('welcome.Welcome Message')}} </title>
+    <title> {{trans('welcome.Message')}} </title>
     @include('layouts.matecss')
     <meta charset="UTF-8">
 </head>
@@ -12,29 +12,29 @@
         <li>
             <img src="picture/3.jpg"> <!-- random image -->
             <div class="caption center-align">
-                <h3>Fedezze fel az �nben rejl? er?t!</h3>
-                <h5 class="light grey-text text-lighten-3">Szem�lyi edz?ink mindig rendelkez�s�re �llnak.</h5>
+                <h3>{{trans("welcome.MotivationTitle1")}}</h3>
+                <h5 class="light grey-text text-lighten-3">{{trans("welcome.Motivationbody1")}}</h5>
             </div>
         </li>
         <li>
             <img src="picture/7.jpg"> <!-- random image -->
             <div class="caption left-align">
-                <h3>Mindig fitten tarjuk!</h3>
-                <h5 class="light grey-text text-lighten-3">T�bb mint 100 eszk�z �ll rendelkez�s�re n�lunk amivel fejlesztheti izomzat�t.</h5>
+                <h3>{{trans("welcome.MotivationTitle2")}}</h3>
+                <h5 class="light grey-text text-lighten-3">{{trans("welcome.Motivationbody2")}}</h5>
             </div>
         </li>
         <li>
             <img src="picture/2.jpg"> <!-- random image -->
             <div class="caption right-align">
-                <h3>Edzen vel�nk!</h3>
-                <h5 class="light grey-text text-lighten-3">Ak�r szem�lyi edz? ak�r csapatban val� r�szvetlre is szeretettel v�rjuk.</h5>
+                <h3>{{trans("welcome.MotivationTitle3")}}</h3>
+                <h5 class="light grey-text text-lighten-3">{{trans("welcome.Motivationbody3")}}</h5>
             </div>
         </li>
         <li>
             <img src="picture/6.jpg"> <!-- random image -->
             <div class="caption center-align">
-                <h3>Csatlakozzon �n is hozz�nk!</h3>
-                <h5 class="light grey-text text-lighten-3">B�rlet v�s�rl�s eset�n edz?ink �r�rira iratkozhat.</h5>
+                <h3>{{trans("welcome.MotivationTitle4")}}</h3>
+                <h5 class="light grey-text text-lighten-3">{{trans("welcome.Motivationbody4")}}</h5>
             </div>
         </li>
     </ul>

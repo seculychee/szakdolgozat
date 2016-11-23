@@ -22,6 +22,7 @@ class ContactController extends BaseController{
         // CONTACT create
         $contact = $this->crateContact($request->only('firstName','lastName','phone','email','languageCode'));
         //Prepare array for user create
+
         //$array = $request->only('email','password').array(['contact_id' => $contact->id]);
         //$asd = $contact->id;
         //$data = array_merge($request->only(["email", "password"]),["contact_id" => 1]);
@@ -32,10 +33,11 @@ class ContactController extends BaseController{
         //create user from prepared array
 
         //RegisterController::create($data);
-        User::create([
+       User::create([
             'email'         => $request->all()['email'],
             'password'      => $request->all()['password'],
             'contact_id'    => $contact->id,
+           // nekem a contact_id az id hez rendelése nem m?ködik
         ]);
 
         //return redirect()->route("regGet")->with('successMsg', 'registration.success');
@@ -54,12 +56,27 @@ class ContactController extends BaseController{
             "firstName.required"    => "validation.firstNameRequired",
             "firstName.min"         => "validation.firstNameMin",
             "firstName.max"         => "validation.firstNameMax",
-
+            "lastName.required"    => "validation.firstNameRequired",
+            "lastName.min"         => "validation.firstNameMin",
+            "lastName.max"         => "validation.firstNameMax",
+          /*  "country.required"    => "validation.firstNameRequired",
+            "country.min"         => "validation.firstNameMin",
+            "country.max"         => "validation.firstNameMax",
+            "city.required"    => "validation.firstNameRequired",
+            "city.min"         => "validation.firstNameMin",
+            "city.max"         => "validation.firstNameMax",
+            "street.required"    => "validation.firstNameRequired",
+            "street.min"         => "validation.firstNameMin",
+            "street.max"         => "validation.firstNameMax",*/
         ];
         $rule = [
             'firstName'     => 'required|min:2|max:50',
+            'lastName'     => 'required|min:2|max:50',
+           /* 'country'     => 'required|min:2|max:50',
+            'city'     => 'required|min:4|max:50',
+            'street'     => 'required|min:2|max:50',*/
             //'email'         => 'unique:user',
-            //'password'      =>  'confirmed'
+            'password'      =>  'confirmed'
         ];
         return Validator::make($data,$rule,$message);
     }

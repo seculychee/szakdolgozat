@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> �dv�z�lj�k </title>
+    <title> {{trans("registration.title")}}</title>
     @include('layouts.matecss')
     <meta charset="UTF-8">
 </head>
@@ -41,7 +41,7 @@
                 <div class="col s12 m12 l6">
                     <div class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                            <span class="card-title">{{trans("welcome.reg")}}</span>
+                            <span class="card-title">{{trans("registration.title")}}</span>
                             <div class="row">
                                 <div class="col s12">
                                     <div class="row">
@@ -49,17 +49,19 @@
                                             <input id="firstName" type="text" name="firstName"
                                                    class="validate tooltipped"
                                                    data-position="top" data-delay="50"
-                                                   data-tooltip="{!! trans("welcome.vnev") !!}"
+                                                   data-tooltip="{!! trans("registration.FirstNameRules") !!}"
                                                    value="{{old("firstName")}}"
                                             >
-                                            <label for="firstName">Vezet�kn�v</label>
+                                            <label for="firstName">{{trans("registration.FirstName")}}</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="lastName" type="text" name="lastName" class="validate"
+                                            <input id="lastName" type="text" name="lastName" class="validate tooltipped"
+                                                   data-position="top" data-delay="50"
+                                                   data-tooltip="{!! trans("registration.LastNameRules") !!}"
                                                    value="{{old("lastName")}}">
-                                            <label for="lastName">Keresztn�v</label>
+                                            <label for="lastName">{{trans("registration.LastName")}}</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -75,14 +77,14 @@
                                                     @endforeach
                                                 @endif
                                             </select>
-                                            <label for="languageCode">Language Code</label>
+                                            <label for="languageCode">{{trans("registration.Language")}}</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input id="country" type="text" name="country" class="validate"
                                                    value="{{old("country")}}">
-                                            <label for="country">Orsz�g</label>
+                                            <label for="country">{{trans("registration.Country")}}</label>
                                         </div>
                                     </div>
 
@@ -90,14 +92,14 @@
                                         <div class="input-field col s12">
                                             <input id="street" type="text" name="street" class="validate"
                                                    value="{{old("street")}}">
-                                            <label for="street">Utca</label>
+                                            <label for="street">{{trans("registration.Street")}}</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input id="phone" type="text" name="phone" class="validate"
                                                    value="{{old("phone")}}">
-                                            <label for="phone">phone</label>
+                                            <label for="phone">{{trans("registration.Phone")}}</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -120,7 +122,7 @@
                                             <input id="password" type="password" name="password"
                                                    value="{{old('email')}}">
                                             <label for="password"
-                                                   class="validate">{{trans('publicContent/registration.password')}}<i
+                                                   class="validate">{{trans("registration.Pass")}}<i
                                                         style="color:red">*</i></label>
                                         </div>
                                     </div>
@@ -130,7 +132,7 @@
                                             <input id="password_confirmation" type="password"
                                                    name="password_confirmation" value="{{old('email')}}">
                                             <label for="password_confirmation"
-                                                   class="validate">{{trans('publicContent/registration.passwordConfirmed')}}
+                                                   class="validate">{{trans("registration.PassRetry")}}
                                                 <i style="color:red">*</i></label>
                                         </div>
                                     </div>
@@ -146,24 +148,24 @@
                     <div class="card">
                         <div class="card-image">
                             <img class="hide-on-med-and-down" src="picture/9.jpg">
-                            <span class="card-title">Teljes�ts vel�k</span>
+                            <span class="card-title">{{trans("registration.MotivationTitle")}}</span>
                         </div>
                         <div class="card-content">
                             <p>
                                 <input type="checkbox" id="test5" name="test5"/>
-                                <label for="test5">A <a href="#modal1">regisztr�ci�s felt�teleket</a> elfogadom
+                                <label for="test5">A <a href="#modal1">{{trans("registration.RegistRule")}}</a> elfogadom
                                     .</label></p>
                             <p>
                                 <input type="checkbox" id="test6" name="test6"/>
-                                <label for="test6"> H�rlev�lre feliratkozom.</label></p>
+                                <label for="test6"> {{trans("registration.Spam")}}</label></p>
                         </div>
                         <div class="card-action">
                             <button class="tooltipped btn waves-effect waves-light" style="background-color: #009688"
                                     type="submit"
                                     name="action"
                                     data-position="bottom" data-delay="50"
-                                    data-tooltip="{{trans("welcome.regTooltip")}}"
-                            >{{trans("welcome.reg")}}
+                                    data-tooltip="{{trans("registration.regTooltip")}}"
+                            >{{trans("registration.title")}}
                             </button>
                         </div>
                     </div>
@@ -174,8 +176,8 @@
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
         <div class="modal-content">
-            <h4>Regisztr�ci�s felt�telek</h4>
-            <p>Itt meg a t�bbi sz�veg</p>
+            <h4>{{trans("registration.RegistRuleTitle")}}</h4>
+            <p>{{trans("registration.RegistRuleBody")}}</p>
         </div>
         <div class="modal-footer">
             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>

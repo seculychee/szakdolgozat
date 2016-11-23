@@ -24,10 +24,22 @@ Route::get('login', function () {
 Route::get('regist', function () {
     return view('pages.test');
 })->name("regGet");
+
+
 // �tmenetileg minden gombra a login a regisztr�ci�s fel�letre ugrik k�s�bbiekbe jav�tani kell
-Route::post('login', function () {
-    return view('pages.test');
-});
+
+
+
+// vizsgálat bejelentkezett-e
+Route::get('login', array('uses' => 'HomeController@showLogin'));
+
+// Post
+Route::post('login', array('uses' => 'HomeController@doLogin'));
+
+
+
+
+
 Route::post('/regisztracio','contactController@regStart')->name('reg');
 
 // Only redirect when user has a authenticated
