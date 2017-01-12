@@ -4,6 +4,7 @@ return array(
   'User'    => 'Email',
   'Pass'    => 'Jelszó',
   'ForgotPass'  => 'Elfelejtettem a jelszót',
+  'Remember'  => 'Emlékezz rám',
 
     'MotivationTitle'   => 'Ők már megtették az első lépéseket!',
     'MotivationBody'    => 'Jelentkezz hozzánk és tekintsd meg a tökéletes

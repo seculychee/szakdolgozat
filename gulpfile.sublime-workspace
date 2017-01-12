@@ -1,0 +1,381 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"st",
+				"style	Tag"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"pro",
+				"proba"
+			],
+			[
+				"lo",
+				"loginform"
+			],
+			[
+				"login",
+				"loginbutton"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"p",
+				"pointer"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"fi",
+				"fixed"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"al",
+				"align-self"
+			],
+			[
+				"ali",
+				"align-items"
+			],
+			[
+				"f",
+				"font-size"
+			],
+			[
+				"font-",
+				"font-weight"
+			],
+			[
+				"mysql_",
+				"mysql_query"
+			],
+			[
+				"mysql",
+				"mysql_query"
+			],
+			[
+				"di",
+				"displayimage"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/wamp/www/loginrendszer/regisztform.php",
+		"/C/wamp/www/loginrendszer/login.php",
+		"/C/wamp/www/loginrendszer/index.php",
+		"/C/wamp/www/loginrendszer/regisztellenor.js",
+		"/C/wamp/www/bootstrap/login.php",
+		"/C/wamp/www/loginrendszer/regist.php",
+		"/C/wamp/www/loginrendszer/style.css",
+		"/C/Users/Szeku/Desktop/Programozás/mobil.html",
+		"/C/Users/Szeku/Desktop/Programozás/radio button.html",
+		"/C/wamp/www/loginrendszer1/login.php",
+		"/C/wamp/www/CodeIgniter-3.1.0/system/database/DB.php",
+		"/C/Users/Szeku/Desktop/index/Index.htm",
+		"/C/wamp/www/bootstrap/index.html",
+		"/D/pendrive/minden notebook/segitség/PHP Dátum műveletek, MySQL-ból lekérdezve · Weblabor_files/mobile.css",
+		"/C/Users/Szeku/Desktop/Programozás/tanul/Új mappa/style.css",
+		"/C/wamp/www/bootstrap/css/bootstrap-theme.css",
+		"/C/wamp/www/bootstrap/css/bootstrap.min.css",
+		"/C/Users/Szeku/Desktop/Programozás/css mobil/desktop.php",
+		"/C/Users/Szeku/Desktop/Programozás/css mobil/desktop.css",
+		"/C/wamp/www/loginrendszer/adatlap.php",
+		"/C/wamp/www/loginrendszer/userupdate1.php",
+		"/C/Users/Szeku/Desktop/Programozás/tanul/Új mappa/index.html",
+		"/C/wamp/www/loginrendszer/belep.js",
+		"/C/wamp/www/loginrendszer/jquery.js",
+		"/C/wamp/www/loginrendszer/login.js",
+		"/C/wamp/www/loginrendszer/animate.css",
+		"/C/wamp/www/fddddd.html",
+		"/C/wamp/www/sline 3 alpha bazdmeg/bejelentkezo_urlap.php",
+		"/C/Users/Szeku/Desktop/Programozás/loginrendszer/login.php",
+		"/C/wamp/www/sline 3 alpha bazdmeg/animate.css",
+		"/C/wamp/www/hovertree/login.php",
+		"/C/wamp/www/loginrendszer/felhasz.php",
+		"/C/wamp/www/sline 3 alpha bazdmeg/stylelogin2.css",
+		"/C/wamp/www/hovertree/style.css",
+		"/C/Users/Szeku/Desktop/Programozás/tanul/harmasdik.html",
+		"/C/Users/Szeku/Desktop/Programozás/tanul/band.html",
+		"/C/Users/Szeku/Desktop/Programozás/tanul/css1.html",
+		"/C/Users/Szeku/Desktop/Programozás/tanul/bootstrap.html",
+		"/C/wamp/www/sline3/bejelentkezo_urlap.php",
+		"/C/wamp/www/sline3/login.php",
+		"/C/Users/Szeku/Desktop/Programozás/tanul/elso.html",
+		"/C/Users/Szeku/Desktop/Programozás/tanul/masodik.html",
+		"/C/Users/Szeku/Desktop/web wallpaper/style.css",
+		"/C/Users/Szeku/Desktop/Programming/fix menu2/indexcustom.html",
+		"/C/Users/Szeku/Desktop/Programming/fix menu2/index.html",
+		"/C/Users/Szeku/Desktop/Programming/fix menu2/fix.css",
+		"/C/wamp/www/loginrendszer/people.php",
+		"/C/wamp/www/loginrendszer/user.php",
+		"/C/wamp/www/loginrendszer/customimages.php",
+		"/C/Users/Szeku/Desktop/tanulás/forms/inputstep3.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/input6asdads.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/input8 beleirja.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/input5 image.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/input4 new blank.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/input3 methodpost.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/input3 multiformdata.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/input2.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/input.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/inputnumber.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/output.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/checkbox.html",
+		"/C/Users/Szeku/Desktop/tanulás/forms/kivalaszt.html",
+		"/C/Users/Szeku/Desktop/tanulás/symbol.html",
+		"/C/Users/Szeku/Desktop/tanulás/responsive-tablet,telephone,pc.html",
+		"/C/Users/Szeku/Desktop/tanulás/layout.html",
+		"/C/Users/Szeku/Desktop/tanulás/felsorol-square,circle,nome.html",
+		"/C/Users/Szeku/Desktop/tanulás/input.html",
+		"/C/Users/Szeku/Desktop/tanulás/borderedexample.html",
+		"/C/Users/Szeku/Desktop/tanulás/iframe.html",
+		"/C/Users/Szeku/Desktop/tanulás/video.html",
+		"/C/Users/Szeku/Desktop/tanulás/felsorol2.html",
+		"/C/Users/Szeku/Desktop/tanulás/datalist.html",
+		"/C/Users/Szeku/Desktop/tanulás/tabla.html",
+		"/C/Users/Szeku/Desktop/tanulás/felsorolas.html",
+		"/C/Users/Szeku/Desktop/tanulás/audio.html",
+		"/C/Users/Szeku/Desktop/tanulás/buttom.html",
+		"/C/Users/Szeku/Desktop/tanulás/tabla2.html",
+		"/C/Users/Szeku/Desktop/tanulás/classes.html",
+		"/D/pendrive/notebook/login/index.php",
+		"/D/pendrive/notebook/login/js/script.js",
+		"/C/Users/Szeku/Desktop/tanulás/keygen.html",
+		"/C/Users/Szeku/Desktop/asdasdadsadsadsads.sql",
+		"/C/wamp/www/etano/index.php",
+		"/C/Users/Szeku/Desktop/html2/window-loader.js",
+		"/C/Users/Szeku/Desktop/html2/index.html",
+		"/C/wamp/www/etano/blog_posts_addedit_left.php",
+		"/C/Users/Szeku/Desktop/html2/montage-window.js",
+		"/C/Users/Szeku/Desktop/html/emailellenor.js",
+		"/C/Users/Szeku/Desktop/html/insta.html",
+		"/C/wamp/www/sline3/nyersanyag_adatok.php",
+		"/C/wamp/www/loginrendszer/kepfeltolt.php",
+		"/C/wamp/www/loginrendszer/teszt.php",
+		"/C/Users/Szeku/Desktop/html/java.js",
+		"/C/Users/Szeku/Desktop/html/company.html",
+		"/C/Users/Szeku/Desktop/html/index.html",
+		"/C/wamp/www/sline 3 alpha bazdmeg/kesztermek_adatok.php",
+		"/C/wamp/www/sline 3 alpha bazdmeg/teljesitmeny_naplo.php",
+		"/C/wamp/www/sline 3 alpha bazdmeg/selejt.php",
+		"/C/wamp/www/sline 3 alpha bazdmeg/import.php",
+		"/C/wamp/www/Lychee-3.0.5/php/autoload.php",
+		"/C/wamp/www/Lychee-3.0.5/php/api.php",
+		"/C/wamp/www/sql kepfeltolt/mysqlimage.php",
+		"/C/wamp/www/loginrendszer/config.php",
+		"/C/wamp/www/vendegkonyv/index.php",
+		"/C/Users/Szeku/AppData/Local/Temp/Rar$DIa0.721/index.php",
+		"/C/wamp/www/vendégkönyv/index.php",
+		"/C/wamp/www/vendégkönyv/vendegkonyv/insert.php",
+		"/C/Users/Szeku/AppData/Local/Temp/Rar$DIa0.779/guestbook.php",
+		"/C/Users/Szeku/AppData/Local/Temp/Rar$DIa0.641/index.php",
+		"/D/pendrive/minden notebook/www/POST.php",
+		"/D/pendrive/minden notebook/www/index3.php",
+		"/D/pendrive/minden notebook/www/index.tmpl.php",
+		"/D/pendrive/minden notebook/www/functions.php",
+		"/D/pendrive/minden notebook/www/vegyes/jelenleti_lekeres.php",
+		"/D/pendrive/minden notebook/www/vegyes/gettype.php",
+		"/D/pendrive/minden notebook/www/array.php",
+		"/C/Users/Szeku/Desktop/index/Index - Kerékagy - Buhera a köbön  így tedd egyértelművé a KRESZ-tábládat!_files/index_base.js",
+		"/C/Users/Szeku/Desktop/index/Index - Kerékagy - Buhera a köbön  így tedd egyértelművé a KRESZ-tábládat!_files/index.js",
+		"/C/Users/Szeku/Desktop/index/Index - Kerékagy - Buhera a köbön  így tedd egyértelművé a KRESZ-tábládat!_files/sdk.js",
+		"/C/Users/Szeku/Desktop/Programozás/sline3u/megrendelesek.php",
+		"/C/Users/Szeku/Desktop/Programozás/sline3u/vonalkod.php",
+		"/C/Users/Szeku/Desktop/Programozás/sline3u/import.php",
+		"/C/Users/Szeku/Desktop/PHP MySQL Save retrive image from database/mysqlimage.php",
+		"/C/Users/Szeku/Downloads/modosit_nyersanyag1.php",
+		"/E/Új mappa/functions2.php",
+		"/E/Új mappa/functions2 (1).php",
+		"/C/Users/Szeku/Desktop/izé.html",
+		"/C/wamp/www/login/ajax.php"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"demo",
+			"ind",
+			"listbox",
+			"item",
+			"gly",
+			"fixed",
+			"fadeinup",
+			"fade",
+			"fix",
+			"po",
+			"loginbutton",
+			"}",
+			"white",
+			" \n",
+			";\n",
+			"'];\n",
+			"\");\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "gulpfile.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

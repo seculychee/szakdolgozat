@@ -5,46 +5,53 @@
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Ir�ny�t� k�zpont c�mez�s szerint
-| get --> URL hely�re beg�pelt string eset�n hova ir�ny�tson , mit csin�ljon
-| post --> egy adott k�r�s tov�bb�t�sa a megadott honlapr�l
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
 |
 */
 
-//f?oldal
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@getIndex')->name('/');
 
-//login
-Route::get('login', function () {
-    return view('pages.login');
-});
-//regist
-Route::get('regist', function () {
+Route::get('foo', function () {
     return view('pages.test');
-})->name("regGet");
+});
 
+Route::get('test', 'PagesController@gettest')->name('test');
 
-// �tmenetileg minden gombra a login a regisztr�ci�s fel�letre ugrik k�s�bbiekbe jav�tani kell
+Route::get('about', 'PagesController@getabout')->name('about');
 
+Route::get('help', 'PagesController@gethelp')->name('help');
 
+Route::get('help/first', 'PagesController@gethelp1')->name('help1');
 
-// vizsgálat bejelentkezett-e
-Route::get('login', array('uses' => 'HomeController@showLogin'));
+Route::resource('product','ProductController');
 
-// Post
-Route::post('login', array('uses' => 'HomeController@doLogin'));
+Route::get('valami', 'PagesController@getvalami')->name('valami');
+Auth::routes();
 
+Route::get('/index', 'HomeController@index');
 
-
-
-
-Route::post('/regisztracio','contactController@regStart')->name('reg');
-
-// Only redirect when user has a authenticated
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('adatlap','contactController@getDatas')->name('getContactData');
+Route::get('one', function () {
+    return view('pages.one');
 });
 
 
+
+
+Route::get('/addUserData', function () {
+    return view('pages.UserData');
+})->name('addUserdata');
+;
+
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+
+    Route::group(['prefix' => 'admin'], function () {
+    	Route::resource('/user', 'UserController');
+    	Route::resource('/post', 'PostController');
+    });
+});
