@@ -1,6 +1,7 @@
 <?php
 return array(
     'Message' => "Üdvözöljük nálunk",
+    'fitness' => "Fitness",
     "vezeteknevRequire" => "Vezetéknév megadása kötelező",
     'MotivationTitle1'  =>  'Fedezze fel az önben rejlő erőt!',
     'MotivationTitle2'  =>  'Mindig fitten tarjuk!',
@@ -13,6 +14,8 @@ return array(
     'Motivationbody4'  =>  'Bérlet vásárlás esetén edzőink óráira iratkozhat.',
     'ContactUs'  =>  'Vegye fel a kapcsolatot velünk',
     'Regist'  =>  'Regisztráljon most és jelentkezzen óráinkra',
+    'logged'  =>  'Sikeresen bejelentkezett',
+    'thanks'  =>  'Regisztráljon órákra. Válassza ki az Aktuális óráink menüpontot és tájékozodjon mikor, hol tartanak edzőink csoportos órákat.',
 
 
 

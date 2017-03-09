@@ -7,19 +7,20 @@
                                       <div class="card  red darken-4 darken-1">
                                         <div class="card-content white-text">
                                           <span class="card-title">Hiba</span>
-                                          <p>{{ $errors->first('password') }}</p>
+                                          <p>{{ trans("validation.loginpasserror")}}</p>
                                      </div>
                                     </div>
                                   </div>
                                  </div>
                             @endif 
-                            @if ($errors->has('email'))
+                            
+ @if ($errors->has('email'))
                                  <div class="row">
                                     <div class="col s12 ">
                                       <div class="card red darken-4 darken-1">
                                         <div class="card-content white-text">
                                           <span class="card-title">Hiba</span>
-                                          <p>{{ $errors->first('email') }}</p>
+                                          <p>{{trans("validation.loginemailerror")}}</p>
                                      </div>
                                     </div>
                                   </div>
@@ -54,10 +55,10 @@
                               
                             </div>
                         </div>
+
                         <p>
-                                <label for="remember">
-                                        <input type="checkbox" name="remember" id="remember"> {{trans("login.Remember")}}
-                                    </label>
+                        <input type="checkbox" name="remember" id="remember">
+                                <label for="remember"> {{trans("login.Remember")}} </label>
                        
                         </p>
                                 
@@ -69,6 +70,8 @@
                                 <a class="waves-effect waves-light btn" href="{{ url('/password/reset') }}">
                                     {{trans("login.ForgotPass")}}
                                 </a>
+                                {!! csrf_field() !!}
                                 </form>
+
 
 @endsection

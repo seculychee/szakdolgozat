@@ -15,9 +15,9 @@
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center teal-text text-lighten-2">{{trans("welcome.Message")}}</h1>
+        <h1 class="header center teal-text text-lighten-2" style="text-shadow: 2px 2px 3px #546E7A ;">{{trans("welcome.Message")}}</h1>
         <div class="row center">
-          <h4 class="header col s12 light" style="color: white;">{{trans("welcome.MotivationTitle4")}}</h4>
+          <h4 class="header col s12 light" style="color: white; text-shadow: 2px 2px 3px #546E7A ;">{{trans("welcome.MotivationTitle4")}}</h4>
         </div>
         <br><br>
 
@@ -68,7 +68,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
-          <h4 class="header col s12 light" style="color: white;"><strong>{{trans("welcome.MotivationTitle3")}}</strong></h4>
+          <h4 class="header col s12 light" style="color: white; text-shadow: 2px 2px 3px #546E7A ;"><strong>{{trans("welcome.MotivationTitle3")}}</strong></h4>
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
-          <h5 class="header col s12 light"><strong>{{trans("welcome.Regist")}}</strong></h5>
+          <h5 class="header col s12 light" style="text-shadow: 2px 2px 3px #546E7A ;"><strong>{{trans("welcome.Regist")}}</strong></h5>
         </div>
       </div>
     </div>
@@ -110,7 +110,7 @@
 
 
         </div>
-        <div class="col l3 s12">
+<!--        <div class="col l3 s12">
           <h5 class="white-text">Adatok</h5>
           <ul>
             <li><a class="white-text" href="#!">Link 1</a></li>
@@ -129,7 +129,7 @@
           </ul>
         </div>
       </div>
-    </div>
+    </div>-->
     <div class="footer-copyright">
       <div class="container">
       Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>

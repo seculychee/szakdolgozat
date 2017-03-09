@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{trans("welcome.fitness")}}</title>
 
      @include('layouts.matejs')
 @include('layouts.matecss')
@@ -21,7 +21,7 @@
     </script>
     @endif
 </head>
-<body>
+<body background="picture/3.jpg">
 @if (Auth::guest())
 @include('layouts.navbar')
  @else
@@ -29,8 +29,8 @@
 @endif
 @yield('content')
     
-
    
-    <script src="/js/app.js"></script>
+@yield('afterScript')
+<script src="/js/app.js"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 @section('title')
-	All product
-	@stop
+
 	@section('body')
 		    <div class="container">
         @if (count($errors) > 0)

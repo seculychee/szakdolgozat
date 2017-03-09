@@ -1,83 +1,191 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Contact;
-use App\Http\Controllers\Auth\RegisterController;
-use App\User;
-use Validator;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
 
-class ContactController extends BaseController{
+use App\Http\Requests;
+use App\Address;
+use App\User;
+use App\Contact;
+use App\Language;
+use App\UserContact;
+use App\AddressUser;
+use Validator;
 
-    private $var;
-
-    public function regStart(Request $request){
-
-        $validation = $this->validationReg($request->all());
-        if($validation->fails())
-            return redirect(route('regGet'))
-                ->withErrors($validation->errors()->all())
-                ->withInput();
-        // CONTACT create
-        $contact = $this->crateContact($request->only('firstName','lastName','phone','email','languageCode'));
-        //Prepare array for user create
-
-        //$array = $request->only('email','password').array(['contact_id' => $contact->id]);
-        //$asd = $contact->id;
-        //$data = array_merge($request->only(["email", "password"]),["contact_id" => 1]);
-        //$request->all()['contact_id'] = $contact->id;
-        //add contact id to prepared array
-        //$array["contact_id"] = $contact->id;
-        //$array += ["contact_id" => $contact->id];
-        //create user from prepared array
-
-        //RegisterController::create($data);
-       User::create([
-            'email'         => $request->all()['email'],
-            'password'      => $request->all()['password'],
-            'contact_id'    => $contact->id,
-           // nekem a contact_id az id hez rendelése nem m?ködik
-        ]);
-
-        //return redirect()->route("regGet")->with('successMsg', 'registration.success');
-        return view('pages.test',[
-            'success'              => "registration.success",
-        ]);
+class ContactController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+            $data = Language::all();
+    return view('auth.register')->with('data', $data);
     }
 
-    public function crateContact($data){
-        return $contact = Contact::create($data);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        /* 
+        $this->validate($request, [
+            'email' => '',
+            'password' => '',
+            'firstname' => '',
+            'lastname' => '',
+            'address' => '',
+            'city' => '',
+            'zip' => '',
+            ])
+    */
+        }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+         $validation = $this->validationReg($request->all());
+         if ($validation->fails()) 
+             return redirect('/regist')
+                            ->withErrors($validation->errors()->all())
+                            ->withInput();
+         
+        $user = $this->createUser($request->only('email','password'));
+        $contact = $this->createContact($request->only('firstname','lastname','languageid'));
+        $address = $this->createAddress($request->only('address','city','zip'));
+        UserContact::create([
+            'user_id'            => $user->id,
+            'contact_id'         => $contact->id,
+        ]);
+        AddressUser::create([
+            'address_id'         => $address->id,
+            'user_id'            => $user->id,
+        ]);
+
+        return 'Elmentve';
+    
+    }
+    public function createUser($dat){
+        return $contact = User::create($dat);
+    }
+    public function createContact($dat){
+        return $contact = Contact::create($dat);
+    }
+    public function createAddress($dat){
+        return $contact = Address::create($dat);
     }
 
-    public function validationReg(array $data){
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
-        $message = [
-            "firstName.required"    => "validation.firstNameRequired",
-            "firstName.min"         => "validation.firstNameMin",
-            "firstName.max"         => "validation.firstNameMax",
-            "lastName.required"    => "validation.firstNameRequired",
-            "lastName.min"         => "validation.firstNameMin",
-            "lastName.max"         => "validation.firstNameMax",
-          /*  "country.required"    => "validation.firstNameRequired",
-            "country.min"         => "validation.firstNameMin",
-            "country.max"         => "validation.firstNameMax",
-            "city.required"    => "validation.firstNameRequired",
-            "city.min"         => "validation.firstNameMin",
-            "city.max"         => "validation.firstNameMax",
-            "street.required"    => "validation.firstNameRequired",
-            "street.min"         => "validation.firstNameMin",
-            "street.max"         => "validation.firstNameMax",*/
-        ];
-        $rule = [
-            'firstName'     => 'required|min:2|max:50',
-            'lastName'     => 'required|min:2|max:50',
-           /* 'country'     => 'required|min:2|max:50',
-            'city'     => 'required|min:4|max:50',
-            'street'     => 'required|min:2|max:50',*/
-            //'email'         => 'unique:user',
-            'password'      =>  'confirmed'
-        ];
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+    protected function validationReg(array $data)
+    {
+            $rule = [
+            'email' => 'required|min:2|max:255',
+            'password' => 'required|min:2|max:255',
+            'confirm' => 'required|same:password|min:2|max:255',
+            'firstname' => 'required|min:2|max:50',
+            'lastname' => 'required|min:2|max:50',
+            'address' => 'required|min:2|max:50',
+            'city' => 'required|min:4|max:50',
+            'zip' => 'numeric|required|min:2',
+            ];
+
+            $message = [
+            'email.required' => 'validation.emailRequired',
+            'email.min' => 'validation.emailMin',
+            'email.max' => 'validation.emailMax',
+
+            'password.required' => 'validation.passwordRequired',
+            //'password.confirmed' => 'validation.passwordConfirmed',
+            'password.min' => 'validation.passwordMin',
+            'password.max' => 'validation.passwordMax',
+
+            'confirm.required' => 'validation.passwordRequired',
+            //'confirm.confirmed' => 'validation.passwordConfirmed',
+            'confirm.min' => 'validation.passwordMin',
+            'confirm.max' => 'validation.passwordMax',
+
+            'firstname.required' => 'validation.firstNameRequired',
+            'firstname.min' => 'validation.firstNameMin',
+            'firstname.max' => 'validation.firstNameMax',
+
+            'lastname.required' => 'validation.lastNameRequired',
+            'lastname.min' => 'validation.lastNameMin',
+            'lastname.max' => 'validation.lastNameMax',
+
+            'address.required' => 'validation.addressRequired',
+            'address.min' => 'validation.addressMin',
+            'address.max' => 'validation.addressMax',
+
+            'city.required' => 'validation.cityRequired',
+            'city.min' => 'validation.cityMin',
+            'city.max' => 'validation.cityMax',
+
+            'zip.required' => 'validation.zipRequired',
+            'zip.min' => 'validation.zipMin',
+            'zip.numeric' => 'validation.zipNumeric',
+
+            ];
+
+        /*
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ]);*/
         return Validator::make($data,$rule,$message);
     }
 }

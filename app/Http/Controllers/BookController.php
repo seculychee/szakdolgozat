@@ -1,0 +1,113 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\CompanyType;
+use App\Address;
+use App\AddressClassroom;
+use App\Classroom as Classroom;
+use App\Company as Company;
+use App\CompanyAddress;
+use App\Http\Requests;
+use Validator;
+
+class BookController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {   //dd($company,$address,$class);
+        $add;
+        $company = Company::all();
+        foreach ($company as $aaa) {
+            $add = $aaa->id;
+        }
+        $address = Company::find($add)->sites()->get();
+        
+
+        $cll;
+        foreach ($address as $aaa) {
+            $cll = $aaa->id;
+        }
+
+        $class = Address::find($cll)->classroom()->get();
+        
+
+       
+        
+        
+        return view('books.index')->with('address', $address)
+                                  ->with('company', $company)
+                                  ->with('class', $class);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+       return view('books.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+       
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}

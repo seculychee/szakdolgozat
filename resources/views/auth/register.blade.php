@@ -1,78 +1,89 @@
 @extends('layouts.app')
 @section('content')
+@if (count($errors) > 0)
 <div class="container">
+  <div class="row">
+    <div class="col s12">
+      <div class="card-panel red white-text">
+      <h5>Hiba</h5>
+        <ul>
+        @foreach($errors->all() as $error)
+          <li>{{trans($error)}}</li>
+          @endforeach
+        </ul>  
+      </div>
+    </div>
+  </div>
+</div>
+@endif
+<div class="container" >
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+            <div class="panel panel-default" style="background-color: #546e7a">
+                <div class="panel-heading "><div class="divider"></div>
+  <div class="section">
+    <h5 class="text-center white-text center">{{trans("registration.title")}}</h5>
+  </div></div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                        {{ csrf_field() }}
+                         <form action="store" method="post">
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" name="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" name="password" class="validate">
+          <label for="password">{{trans("validation.password")}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="confirm" type="password" name="confirm" class="validate">
+          <label for="confirm">{{trans("validation.passwordconf")}}</label>
+        </div>
+      </div>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="firstname" type="text" name="firstname" class="validate">
+          <label for="firstname">{{trans("validation.firstname")}}</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="lastname" type="text" name="lastname" class="validate">
+          <label for="lastname">{{trans("validation.lastname")}}</label>
+        </div>
+      </div>
+
+                            <div class="input-field col s12">
+                              <select class="browser-default" name="languageid">
+                          <option value="" disabled selected>Válasszon nyelvet</option>
+                          @foreach($data as $s)
+                            <option value="{{$s->id}}">{{$s->displayName}}</option>
+                          @endforeach
+                              </select>
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="row">
+        <div class="input-field col s4">
+          <input id="city" type="text" name="city" class="validate">
+          <label for="city">{{trans("validation.city")}}</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="zip" type="text" name="zip" class="validate">
+          <label for="zip">{{trans("validation.zip")}}</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="address" type="text" name="address" class="validate">
+          <label for="address">{{trans("validation.address")}}</label>
+        </div>
+      </div>
+    <input type="hidden" name="_token" value="{{csrf_token()}}"><br>
+    <a class="waves-effect waves-light btn"><input type="submit" name="submit" value="{{trans("registration.title")}}"></a>
+ </form>
+                    </div>
                 </div>
             </div>
         </div>
