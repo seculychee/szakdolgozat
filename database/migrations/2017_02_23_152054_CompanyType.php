@@ -143,7 +143,7 @@ class CompanyType extends Migration
             array('name'=>'Háztartás')
         );
 
-        DB::table('companyType')->insert($data);
+        DB::table('companyTypes')->insert($data);
     }
 
     /**
@@ -153,6 +153,6 @@ class CompanyType extends Migration
      */
     public function down()
     {
-        Schema::drop('companyType');
+        Schema::drop('companyTypes');
     }
 }

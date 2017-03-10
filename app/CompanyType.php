@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CompanyType extends Model
 {
+    protected $table ="companytypes";
     protected $fillable = ['name'];
     public function Company()
     {

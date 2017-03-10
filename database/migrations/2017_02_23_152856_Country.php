@@ -265,7 +265,7 @@ class Country extends Migration
             array('name' => 'Zambia', 'countryCode' => 'ZMB', 'phonePrefix' => '263'),
             array('name' => 'Zimbabwe', 'countryCode' => 'ZWE', 'phonePrefix' => '')
         );
-        DB::table('country')->insert($data);
+        DB::table('countries')->insert($data);
     }
 
     /**
@@ -275,6 +275,6 @@ class Country extends Migration
      */
     public function down()
     {
-        Schema::drop('country');
+        Schema::drop('countries');
     }
 }

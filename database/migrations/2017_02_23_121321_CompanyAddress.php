@@ -41,7 +41,7 @@ class CompanyAddress extends Migration
      */
     public function down()
     {
-        Schema::drop('companys');
-        Schema::drop('company_address');
+        Schema::drop('companies');
+        Schema::drop('company_addresses');
     }
 }

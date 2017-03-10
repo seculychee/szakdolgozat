@@ -57,7 +57,7 @@ class CompanyController extends Controller
                             ->withInput();
          
 
-        $company = $this->createCompany($request->only('name','regnr','companyType','language_id'));
+        $company = $this->createCompany($request->only('name','regnr','baan','companyType','language_id'));
         $address = $this->createAddress($request->only('address','city','zip'));
         $classroom = $this->createClassroom($request->only('name','space'));
 

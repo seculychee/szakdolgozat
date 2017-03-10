@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'regnr'	=>	'Regisztrációs szám',
+    'regnr'	=>	'Cégjegyzék szám',
     'languageCode'	=>	'Nyelv',
     'companyType'	=>	'Cégtípus',
     'baan'	=>	'baan MIEZ?',

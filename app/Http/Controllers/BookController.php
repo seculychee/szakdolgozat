@@ -20,29 +20,10 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   //dd($company,$address,$class);
-        $add;
+    {
         $company = Company::all();
-        foreach ($company as $aaa) {
-            $add = $aaa->id;
-        }
-        $address = Company::find($add)->sites()->get();
-        
+        return view('books.index')->with('company', $company);
 
-        $cll;
-        foreach ($address as $aaa) {
-            $cll = $aaa->id;
-        }
-
-        $class = Address::find($cll)->classroom()->get();
-        
-
-       
-        
-        
-        return view('books.index')->with('address', $address)
-                                  ->with('company', $company)
-                                  ->with('class', $class);
     }
 
     /**

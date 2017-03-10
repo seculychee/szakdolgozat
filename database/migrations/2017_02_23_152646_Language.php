@@ -160,7 +160,7 @@ class Language extends Migration
             array('code' => 'vi-VN', 'displayName' => 'Vietnamese - Vietnam' , 'cultureCode' => '0x042A', 'iso639xValue' => 'VIT'),
 
         );
-        DB::table('language')->insert($data);
+        DB::table('languages')->insert($data);
     }
 
     /**
@@ -170,6 +170,6 @@ class Language extends Migration
      */
     public function down()
     {
-       Schema::drop('language');
+       Schema::drop('languages');
     }
 }

@@ -6,24 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-	protected $fillable = ['name', 'regnr', 'language_id', 'companyType' ];
+	protected $fillable = ['name', 'regnr', 'baan','language_id', 'companyType' ];
        
     public function sites()
     {
-        return $this->belongsToMany('App\Address', 'company_addresses', 'company_id', 'address_id');
+        return $this->belongsToMany(Address::class, 'company_addresses', 'company_id', 'address_id');
     }
 
     public function userAddress()
     {
-        return $this->hasMany('App\CompanyAddress');
+        return $this->hasMany(CompanyAddress::class);
     }
         public function CompanyType()
     {
-        return $this->hasMany('App\CompanyType');
+        return $this->hasMany(CompanyType::class);
     }
     public function Language()
     {
-        return $this->hasMany('App\Language');
+        return $this->hasMany(Language::class);
     }
 
 
