@@ -46,7 +46,7 @@
                             @role('editor')
                             <li><a href="books">{{trans("navbar.books")}}</a></li>
                             @endrole
-                             
+                             <li><a href="{{route('userbooks')}}">{{trans("navbar.lessons")}}</a></li>
 
                     @endif
                     <li><a href="/home">Adatlap</a></li>

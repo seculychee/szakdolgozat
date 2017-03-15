@@ -6,4 +6,19 @@ return array(
     'date'	=>	'Dátum',
     'save'	=>	'Mentés',
 
+    'getallclass' => 'Edzőink órái',
+    'lessonStart' => 'Óra időpontja',
+    'lessonAddress' => 'Cím',
+    'lessonClass' => 'Terem',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+
 );

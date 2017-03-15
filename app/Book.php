@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    protected $fillable = ['date', 'classroom_id', 'created' ];
+	protected $table ="books";
+    protected $fillable = ['date', 'classroom_id', 'user' ];
 
+    public function terem()
+    {
+    	return $this->belongsTo(Classroom::class);
+    }
+	
 }

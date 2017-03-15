@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CompanyType;
 use App\Address;
+use App\UserBook;
+use App\Book as Book;
 use App\AddressClassroom;
 use App\Classroom as Classroom;
 use App\Company as Company;
 use App\CompanyAddress;
 use App\Http\Requests;
 use Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class BookController extends Controller
 {
@@ -31,9 +35,10 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-       return view('books.create');
+        $class = Classroom::where('id', $id)->get(); 
+       return view('books.create')->with('class',$class);
     }
 
     /**
@@ -44,9 +49,20 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-       
-    }
+      /* $validat = $this->valid($request->all());
+         if ($validat->fails()) 
+             return redirect('/companyAdd')
+                            ->withErrors($validat->errors()->all())
+                            ->withInput();*/
 
+    /*     TODO : User hozzárendelése a táblához         */
+
+        $book = $this->createBook($request->only('date','classroom_id','user'));
+        return 'Elmentve';
+    }
+    public function createBook($dat){
+        return $book = Book::create($dat);
+    }
     /**
      * Display the specified resource.
      *
@@ -90,5 +106,23 @@ class BookController extends Controller
     public function destroy($id)
     {
         //
+    }    
+    public function userbook()
+    {
+        $books = Classroom::all();
+        $userbooks = UserBook::all();
+        return view('books.userbook')->with('books',$books)
+                                     ->with('userbooks',$userbooks);
+    }    
+    public function usertolesson($id)
+    {
+        $userid = Auth::user()->id;
+
+        UserBook::create([
+            'user_id'            => $userid,
+            'book_id'         => $id,
+        ]);
+        return 'Elmentve';
     }
+
 }

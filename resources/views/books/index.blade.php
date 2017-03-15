@@ -4,41 +4,44 @@
 
 
     @if(count($company) >0)
-        <a class="waves-effect waves-light btn center" href="booksAdd">Foglalható óra felvitele</a>
-        <table class="bordered">
-            <thead>
-            <tr style="background-color: #78909C ">
-                <td>ID</td>
-                <td>Cégnév</td>
-                <td>addid</td>
-                <td>city</td>
-                <td>address</td>
-                <td>classid</td>
-                <td>terem</td>
-                <td>ferohely</td>
-            </tr>
-            </thead>
-            <tbody>
-
+    <div class="valign-wrapper">
+        <div class="row">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Felvitt termek</span>
+                </div>
+        </div>
+        </div>
+        </div>
+<div class="row">
             @foreach($company as $com)
-                @foreach($com->sites as $add)
-                    @foreach($add->classroom as $room)
-                        <tr>
-                            <td style="background-color: #90A4AE">{{$com->id}}</td>
-                            <td style="background-color: #90A4AE">{{$com->name}}</td>
-                            <td style="background-color: #90A4AE">{{$add->id}}</td>
-                            <td style="background-color: #90A4AE">{{$add->city}}</td>
-                            <td style="background-color: #90A4AE">{{$add->address}}</td>
-                            <td style="background-color: #90A4AE">{{$room->id}}</td>
-                            <td style="background-color: #90A4AE">{{$room->name}}</td>
-                            <td style="background-color: #90A4AE">{{$room->space}}</td>
-                        </tr>
-                    @endforeach
-                @endforeach
+            @foreach($com->sites as $add)
+            @foreach($add->classroom as $room)
+
+      
+        <div class="col s12 m4">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Felvitt termek</span>
+                           <p>Cég: {{$com->name}}<br>
+                           Város: {{$add->city}}<br>
+                           Cím: {{$add->address}}<br>
+                           Teremnév: {{$room->name}}<br>
+                           Férőhely: {{$room->space}}<br></p>
+            </div>
+            <div class="card-action">
+                <a href="{{route('booksadd',$room->id)}}">
+                <button class="waves-effect waves-light btn center" type="submit" name="id" >Óra felvitel</button>
+                 </a>
+            </div>
+        </div>
+    </div>
+
+            @endforeach
+            @endforeach
             @endforeach
 
-            </tbody>
-        </table>
+</div>
     @else
         {{-- TODO:MAJD korrekció--}}
 

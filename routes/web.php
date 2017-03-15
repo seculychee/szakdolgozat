@@ -53,7 +53,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::put('classAdd/{id}', 'CompanyController@classAdd')->name('classAdd');
     //Foglalás kezelések
     Route::get('books', 'BookController@index');
-    Route::get('booksAdd', 'BookController@create');
+    Route::get('booksAdd/{id}', 'BookController@create')->name('booksadd');
+    Route::post('booksPlus', 'BookController@store')->name('booksplus');
+    //user foglalás kezelések
+    Route::get('allbooks', 'BookController@userbook')->name('userbooks');
+    //órára jelentkezés
+    Route::post('lessongo/{id}', 'BookController@usertolesson')->name('lessonstart');
     /*Route::get('companyData/{company}', function($company){
 
         $company = Company::find($data)->sites()->get();

@@ -59,7 +59,7 @@ class CompanyController extends Controller
 
         $company = $this->createCompany($request->only('name','regnr','baan','companyType','language_id'));
         $address = $this->createAddress($request->only('address','city','zip'));
-        $classroom = $this->createClassroom($request->only('name','space'));
+        $classroom = $this->createClassroom($request->only('class','space'));
 
         AddressClassroom::create([
             'address_id'            => $address->id,
@@ -198,7 +198,6 @@ class CompanyController extends Controller
     public function classTo($id)
     {
          $address = Address::where('id', $id)->get();
-        //dd($id);
             return view('company.createclass')->with('address', $address);
 
     }

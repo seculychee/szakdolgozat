@@ -44,8 +44,10 @@
                            <li><a href="../company">{{trans("navbar.company")}}</a></li>
                             @endrole
                             @role('editor')
-                            <li><a href="Ybooks">{{trans("navbar.books")}}</a></li>
+                            <li><a href="../books">{{trans("navbar.books")}}</a></li>
                             @endrole
+                            
+                            <li><a href="{{route('userbooks')}}">{{trans("navbar.books")}}</a></li>
                              
 
                     @endif

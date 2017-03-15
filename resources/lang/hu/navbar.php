@@ -11,6 +11,6 @@ return array(
     'rolePermission'	=>	'Jogok és szabályok',
     'company'	=>	'Cégek',
     'books'	=>	'Foglalások',
-    ''	=>	'',
+    'lessons'	=>	'Órák',
     ''	=>	'',
 );
