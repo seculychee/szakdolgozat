@@ -17,7 +17,7 @@ class Classroom extends Model
     {
     	return $this->hasMany('App\Book');
     } */
-    public function kurvavagy()
+    public function roombook()
     {
     	return $this->hasmany(Book::class,'classroom_id');
     } 

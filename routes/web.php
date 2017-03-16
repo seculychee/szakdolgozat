@@ -57,6 +57,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('booksPlus', 'BookController@store')->name('booksplus');
     //user foglalás kezelések
     Route::get('allbooks', 'BookController@userbook')->name('userbooks');
+    Route::get('coachLesson', 'BookController@coachlesson')->name('coach');
     //órára jelentkezés
     Route::post('lessongo/{id}', 'BookController@usertolesson')->name('lessonstart');
     /*Route::get('companyData/{company}', function($company){

@@ -42,9 +42,10 @@
                             <li><a href="{{ URL::route('permissions.index') }}">{{trans("navbar.permission")}}</a></li>
                            <li><a href="{{ URL::route('users.index') }}">{{trans("navbar.users")}}</a></li>
                            <li><a href="../company">{{trans("navbar.company")}}</a></li>
+                           <li><a href="../coachLesson">{{trans("navbar.coachLesson")}}</a></li>
                             @endrole
                             @role('editor')
-                            <li><a href="../books">{{trans("navbar.books")}}</a></li>
+                            <li><a href="../books">{{trans("navbar.lessons")}}</a></li>
                             @endrole
                             
                             <li><a href="{{route('userbooks')}}">{{trans("navbar.books")}}</a></li>

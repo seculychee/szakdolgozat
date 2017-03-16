@@ -111,6 +111,8 @@ class BookController extends Controller
     {
         $books = Classroom::all();
         $userbooks = UserBook::all();
+        //$userbooks = Book::all();
+
         return view('books.userbook')->with('books',$books)
                                      ->with('userbooks',$userbooks);
     }    
@@ -122,7 +124,12 @@ class BookController extends Controller
             'user_id'            => $userid,
             'book_id'         => $id,
         ]);
-        return 'Elmentve';
+        return redirect('/allbooks');
+    }
+    public function coachlesson()
+    {
+        $books = Classroom::all();
+        return view('books.coachlesson')->with('books',$books);
     }
 
 }
