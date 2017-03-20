@@ -110,7 +110,7 @@ class BookController extends Controller
     }    
     public function userbook()
     {
-        $books = Classroom::all();
+        $books = Book::all();
         $userbooks = UserBook::all();
        
 

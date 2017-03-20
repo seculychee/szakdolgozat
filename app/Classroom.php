@@ -8,9 +8,9 @@ class Classroom extends Model
 {
     protected $fillable = ['name', 'space' ];
 
-        public function classadd()
+    public function classadd()
     {
-        return $this->belongsToMany('App\Address', 'address_classrooms', 'classroom_id', 'address_id');
+        return $this->belongsToMany(Address::class, 'address_classrooms', 'classroom_id', 'address_id');
     }
 
     public function roombook()

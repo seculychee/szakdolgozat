@@ -37,7 +37,8 @@ class BooksClassrooms extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->string('date');            
-            $table->integer('classroom_id');                                      
+            $table->string('user');
+            $table->integer('classroom_id');
             $table->timestamps();
         });
 

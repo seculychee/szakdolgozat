@@ -11,10 +11,10 @@ class Book extends Model
 
     public function terem()
     {
-    	return $this->belongsTo(Classroom::class);
+    	return $this->belongsTo(Classroom::class,"classroom_id","id");
     }
 	public function userto()
 	{
-		return $this->belongsToMany(User::class, 'book_id', 'user_id');
+		return $this->belongsToMany(User::class,'user_books','book_id');
 	}
 }
