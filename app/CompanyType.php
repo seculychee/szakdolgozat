@@ -8,8 +8,9 @@ class CompanyType extends Model
 {
     protected $table ="companytypes";
     protected $fillable = ['name'];
-    public function Company()
+
+    public function company()
     {
-    	return $this->belongsTo('App\Company');
-    }
+    	return $this->hasmany(Company::class,'companytype_id');
+    } 
 }

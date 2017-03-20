@@ -19,6 +19,7 @@ class CompanyAddress extends Migration
             $table->string('name');            
             $table->string('regnr');                    
             $table->string('baan');                    
+            $table->string('taxnumber');                    
             $table->integer('companyType');                    
             $table->integer('language_id');                    
             $table->timestamps();

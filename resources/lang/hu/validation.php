@@ -52,6 +52,19 @@ return array (
     'regnrMax' => 'Maximum 50 karakter lehet a regisztrációs szám!',
     'regnrNumeric' => 'A regisztrációs szám mező csak számokat tartalmazhat!',
 
+        'baan' => 'Bankszámlaszám',
+    'baanRequired' => 'A bankszámlaszám mező Kitöltése kötelező! ',
+    'baanMin' => 'Minimum 2 karaktert kell tartalmazni a bankszámlaszámnak!',
+    'baanMax' => 'Maximum 50 karakter lehet a bankszámlaszám!',
+    'baanNumeric' => 'A bankszámlaszám mező csak számokat tartalmazhat!',
+
+    'taxnumber' => 'Adószám',
+    'taxnumberRequired' => 'A adószám mező Kitöltése kötelező! ',
+    'taxnumberMin' => 'Minimum 2 karaktert kell tartalmazni a adószámnak!',
+    'taxnumberMax' => 'Maximum 50 karakter lehet a adószám!',
+    'taxnumberNumeric' => 'A adószám mező csak számokat tartalmazhat!',
+
+
     'space' => 'Szabad hely',
     'spaceRequired' => 'Szabad hely mező kitöltése kötelező!',
     'spaceMin' => 'Minimum 2 karaktert kell tartalmazni a szabad helynek!',
@@ -61,7 +74,21 @@ return array (
     'classRequired' => 'Teremnév mező kitöltése kötelező!',
     'classMin' => 'Minimum 4 karaktert kell tartalmazni a !',
     'classMax' => 'Maximum 50 karakter lehet a Teremnév!',
-
+    'chooseLanguage' => 'Válasszon nyelvet',
+    'chooseCompanytype' => 'Válasszon cégtípust',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
 
 
 );

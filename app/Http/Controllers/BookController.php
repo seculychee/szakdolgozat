@@ -25,6 +25,7 @@ class BookController extends Controller
      */
     public function index()
     {
+        
         $company = Company::all();
         return view('books.index')->with('company', $company);
 
@@ -111,7 +112,7 @@ class BookController extends Controller
     {
         $books = Classroom::all();
         $userbooks = UserBook::all();
-        //$userbooks = Book::all();
+       
 
         return view('books.userbook')->with('books',$books)
                                      ->with('userbooks',$userbooks);

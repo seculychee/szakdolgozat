@@ -43,9 +43,13 @@
                                         <label for="regnr">{{trans("validation.regnr")}}</label>
                                     </div>
                                     {{-- TODO: baan kezelés--}}
-                                    <div class="input-field col s6 hiddendiv">
-                                        <input id="regnr" type="text" name="baan" class="validate">
-                                        <label for="regnr">{{trans("validation.regnr")}}</label>
+                                    <div class="input-field col s6 ">
+                                        <input id="baan" type="text" name="baan" class="validate">
+                                        <label for="baan">{{trans("validation.baan")}}</label>
+                                    </div>
+                                      <div class="input-field col s6 ">
+                                        <input id="taxnumber" type="text" name="taxnumber" class="validate">
+                                        <label for="taxnumber">{{trans("validation.taxnumber")}}</label>
                                     </div>
                                     {{-- ########## --}}
                                 </div>
@@ -66,8 +70,8 @@
 
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <select class="browser-default" name="companyType">
-                                            <option value="" disabled selected>Válasszon cégtípust</option>
+                                        <select class="browser-default" name="companytype_id">
+                                            <option value="" disabled selected>{{trans("validation.chooseCompanytype")}}</option>
                                             @foreach($data as $s)
                                                 <option value="{{$s->id}}">{{$s->name}}</option>
                                             @endforeach
@@ -75,7 +79,7 @@
                                     </div>
                                     <div class="input-field col s6">
                                         <select class="browser-default" name="language_id">
-                                            <option value="" disabled selected>Válasszon nyelvet</option>
+                                            <option value="" disabled selected>{{trans("validation.chooseLanguage")}}</option>
                                             @foreach($dataa as $s)
                                                 <option value="{{$s->id}}">{{$s->displayName}}</option>
                                             @endforeach
@@ -84,7 +88,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="class" type="text" name="class" class="validate">
+                                        <input id="class" type="text" name="classr" class="validate">
                                         <label for="class">{{trans("validation.nameClass")}}</label>
                                     </div>
                                     <div class="input-field col s6">

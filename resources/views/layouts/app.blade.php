@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{trans("welcome.fitness")}}</title>
 
-     @include('layouts.matejs')
+@include('layouts.matejs')
 @include('layouts.matecss')
 @if (Auth::guest())
 @else

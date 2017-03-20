@@ -22,9 +22,17 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //$company = Company::find(5)->address()->get();      // ez a sor mukodik
+    /**
+    * A Company modell teljes lekérdezése a benne található kapcsolatokkal
+    * együtt, majd irányítás a view\company\index.blade.php-ra a model elemeivel
+    */
         $company = Company::all();
-        return view('company.index')->with('company', $company);
+        $language = Language::all();
+        $companytype = CompanyType::all();
+
+        return view('company.index')->with('company', $company)
+                                    ->with('language', $language)
+                                    ->with('companytype', $companytype);
     }
 
     /**
@@ -34,6 +42,10 @@ class CompanyController extends Controller
      */
     public function create()
     {
+        /**
+        * Lekérdez: CompanyType és Language modelleket, majd továbbítja 
+        * a view\company\create.blade.php-ra 
+        */
         $data = CompanyType::all();
         $dataa = Language::all();
         return view('company.create')->with('data', $data)
@@ -49,18 +61,29 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-            //dd($request);
+        /**
+        * Cégregisztrálásnál validáció indítása, 
+        * valid függvényre ugrás.
+        */
          $validat = $this->valid($request->all());
          if ($validat->fails()) 
              return redirect('/companyAdd')
                             ->withErrors($validat->errors()->all())
                             ->withInput();
          
-
-        $company = $this->createCompany($request->only('name','regnr','baan','companyType','language_id'));
+        /**
+        * Ha a validáció sikeresen hiba nélkül lezajlott, akkor adatok felvitele
+        * Változókba felvétel a feltöltött adatokat, amiket átadunk a 
+        * hozzátartozó create* -függvényhez 
+        * Az itt létrejött id-ket a kapcsoló táblákba töltjük ezzel létrehozva a
+        * táblák közti adatkapcsolatot.
+        */
+        dd($request->all());
+        $company = $this->createCompany($request->only('name','regnr','baan','taxnumber','companytype_id','language_id'));
         $address = $this->createAddress($request->only('address','city','zip'));
-        $classroom = $this->createClassroom($request->only('class','space'));
+        $classroom = $this->createClassroom($request->only('classr','space'));
 
+        // itt töltjük fel a kapcsoló tábla elemeit 
         AddressClassroom::create([
             'address_id'            => $address->id,
             'classroom_id'         => $classroom->id,
@@ -78,6 +101,9 @@ class CompanyController extends Controller
     }
     public function createAddress($dat){
         return $address = Address::create($dat);
+    }
+    public function createClassroom($dat){
+        return $classroom = Classroom::create($dat);
     }
 
 
@@ -129,16 +155,21 @@ class CompanyController extends Controller
     }
         protected function valid(array $data)
     {
+        // Validációs elemek a felvett input mezőkre.
+        // $rule -> milyen szabályok legyenek érvényesek 
             $rule = [
             'name' => 'required|min:2|max:50',
             'regnr' => 'required|numeric|min:2',
+            'baan' => 'required|numeric|min:2',
+            'taxnumber' => 'required|numeric|min:2',
             'address' => 'required|min:2|max:50',
             'city' => 'required|min:4|max:50',
             'zip' => 'numeric|required|min:2',
-            'class' => 'required|min:4|max:50',
+            'classr' => 'required|min:4|max:50',
             'space' => 'numeric|required|min:2',
             ];
-
+        // a szabályokhoz tartozó hiba üzenetek 
+            // ezeket nyelvi fájlokból olvas ki 
             $message = [
 
             'name.required' => 'validation.companyNameRequired',
@@ -148,6 +179,14 @@ class CompanyController extends Controller
             'regnr.required' => 'validation.regnrRequired',
             'regnr.min' => 'validation.regnrMin',
             'regnr.numeric' => 'validation.regnrNumeric',
+
+            'baan.required' => 'validation.baanRequired',
+            'baan.min' => 'validation.baanMin',
+            'baan.numeric' => 'validation.baanNumeric',
+
+            'taxnumber.required' => 'validation.taxnumberRequired',
+            'taxnumber.min' => 'validation.taxnumberMin',
+            'taxnumber.numeric' => 'validation.taxnumberMax',
 
             'address.required' => 'validation.addressRequired',
             'address.min' => 'validation.addressMin',
@@ -166,9 +205,9 @@ class CompanyController extends Controller
             itt folyt köv
             */
 
-            'class.required' => 'validation.classRequired',
-            'class.min' => 'validation.classMin',
-            'class.max' => 'validation.classMax',            
+            'classr.required' => 'validation.classRequired',
+            'classr.min' => 'validation.classMin',
+            'classr.max' => 'validation.classMax',            
 
             'space.required' => 'validation.spaceRequired',
             'space.min' => 'validation.spaceMin',
@@ -206,6 +245,8 @@ class CompanyController extends Controller
 
     public function classAdd(Request $request, $id)
     {
+
+        //--------------------- Validáció befejezése!!! --------------------//
         /*
         $validat = $this->valid($request->all());
          if ($validat->fails()) 
@@ -223,7 +264,5 @@ class CompanyController extends Controller
         return 'Elmentve';
        return view('company.alldata');
     }
-        public function createClassroom($dat){
-        return $address = Classroom::create($dat);
-    }
+
 }

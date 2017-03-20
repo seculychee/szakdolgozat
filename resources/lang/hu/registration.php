@@ -24,7 +24,7 @@ return array(
 
 
     'RegistRuleTitle' => 'Regisztrációs feltételek',
-    'RegistRuleBody'  => 'REgisztrációs feltételeket tartalmazó szöveg ide jó sokmidnent kell írni A szöveg
+    'RegistRuleBody'  => 'Regisztrációs feltételeket tartalmazó szöveg ide jó sok mindent kell írni. A szöveg
      megfelelője gyakorlatilag az összes európai nyelvben "Text" (különböző írásképekkel a nemzeti helyesírás miatt),
       ami a latin "textum" szóból ered, amely szó eredeti jelentése: szövet, szöveg. A magyarban a nyelvújítás idején
       a jelentést magyar szóval jelöltük. A szöveg egy összefüggő és a környezetétől jól elhatárolt vagy elhatárolható

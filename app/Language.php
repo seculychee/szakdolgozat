@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Language extends Model
 {
      protected $fillable = ['code', 'displayName', 'cultureCode', 'iso639xValue'];
-    public function Company()
+
+        public function company()
     {
-        return $this->hasMany('App\Company');
-    }
+    	return $this->hasmany(Company::class,'language_id');
+    } 
 }
