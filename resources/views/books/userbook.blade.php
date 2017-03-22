@@ -44,24 +44,6 @@
                                 {!! Form::submit('Feliratkozás', ['class' => 'waves-effect waves-light btn', 'onclick' => 'return confirm("Biztos feliratkozik az órára?");']) !!}
                             </form>
                         @endif
-                        {{--@if(count($userbooks ) > 0 )
-                            @foreach($userbooks as $userbook)
-                                @if(Auth::user()->id == $userbook->user_id)
-                                    <p class="white-text">Ide már feliratkoztál</p>
-
-                                @else
-                                    <form method="post" action="{{route('lessonstart',$room->id)}}">
-                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                        {!! Form::submit('Feliratkozás', ['class' => 'waves-effect waves-light btn', 'onclick' => 'return confirm("Biztos feliratkozik az órára?");']) !!}
-                                    </form>
-                                @endif
-                            @endforeach
-                        @else
-                            <form method="post" action="{{route('lessonstart',$room->id)}}">
-                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                {!! Form::submit('Feliratkozás', ['class' => 'waves-effect waves-light btn', 'onclick' => 'return confirm("Biztos feliratkozik az órára?");']) !!}
-                            </form>
-                        @endif--}}
                     </td>
                 </tr>
             @endforeach

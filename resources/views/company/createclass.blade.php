@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app2')
 
 
 @section('content')
@@ -19,7 +19,7 @@
   </div>
 </div>
 @endif
-ch
+
 
 <div class="container" >
     <div class="row">
@@ -27,27 +27,27 @@ ch
             <div class="panel panel-default" style="background-color: #546e7a">
                 <div class="panel-heading "><div class="divider"></div>
   <div class="section">
-    <h5 class="text-center white-text center">{{trans("company.company")}}</h5>
+    <h5 class="text-center white-text center">{{trans("validation.classedit")}}</h5>
   </div></div>
                   <div class="panel-body">
                     <div class="container">
-                    @foreach($address as $s)
-                       <form action="{{route('classAdd',$id = $s->id )}}" method="POST">
+                    @foreach($classroom as $s)
+                       <form action="{{route('classupdate',$id = $s->id )}}" method="POST">
                           
                           <div class="row">
                             <div class="input-field col s6">
-                              <input id="name" type="text" name="name" class="validate">
+                              <input id="name" type="text" value="{{$s->name}}" name="name" class="validate">
                               <label for="name">{{trans("validation.nameClass")}}</label>
                             </div>
 
                             <div class="input-field col s4">
-                              <input id="space" type="text" name="space" class="validate">
+                              <input id="space" type="number" value="{{$s->space}}" name="space" class="validate">
                               <label for="space">{{trans("validation.space")}}</label>
                             </div>
 
    
                           <input type="hidden" name="_token" value="{{csrf_token()}}"><br>                   
-                        <a class="waves-effect waves-light btn"><input type="submit" name="id" value="{{trans("registration.title")}}"></a>
+                        <a class="waves-effect waves-light btn"><input type="submit" name="id" value="{{trans("validation.save")}}"></a>
                         @endforeach
                      </form>
                     </div>

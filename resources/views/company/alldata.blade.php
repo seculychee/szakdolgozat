@@ -1,6 +1,20 @@
 @extends('layouts.app2')
 
 @section('content')
+  @if ( Session::has('success') )
+<div class="vlaign-wrapper">
+    <div class="row">
+        <div class="col s12">
+          <div class="card" style="background-color: #26A69A">
+            <div class="card-content white-text">
+              <span class="card-title">{{ Session::get('success')}}</span>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+@endif
 
 
 @if (count($errors) > 0)
@@ -42,14 +56,14 @@
                             </div>
 
                             <div class="input-field col s4">
-                              <input id="space" type="text" name="space" class="validate">
+                              <input id="space" type="number" name="space" class="validate">
                               <label for="space">{{trans("validation.space")}}</label>
                             </div>
 
                             
                            <input type="hidden" name="_method" value="PUT">
                           <input type="hidden" name="_token" value="{{csrf_token()}}"><br>                   
-                        <a class="waves-effect waves-light btn"><input type="submit" name="submit" value="{{trans("registration.title")}}"></a>
+                        <a class="waves-effect waves-light btn"><input type="submit" name="submit" value="{{trans("validation.save")}}"></a>
                         @endforeach
                      </form>
                     </div>
@@ -62,9 +76,10 @@
     <table>
         <thead>
             <tr style="background-color: #455a64 ">
-                <td>Company ID</td>
                 <td>Cégnév</td>
                 <td>Regisztrációs szám</td>
+                <td>Bankszámlaszám</td>
+                <td>Adószám</td>
                 <td>Address id</td>
                 <td>Város</td>
                 <td>Cím</td>
@@ -75,9 +90,10 @@
             
             
             <tr>
-                <td style="background-color: #546E7A">{{$com->id}}</td>
-                <td style="background-color: #546E7A">{{$com->name}}</td>
+                <td style="background-color: #546E7A">{{$com->companyname}}</td>
                 <td style="background-color: #546E7A">{{$com->regnr}}</td>
+                <td style="background-color: #546E7A">{{$com->baan}}</td>
+                <td style="background-color: #546E7A">{{$com->taxnumber}}</td>
                 @endforeach
                 <td style="background-color: #546E7A">{{$add->id}}</td>
                 <td style="background-color: #546E7A">{{$add->city}}</td>
@@ -85,33 +101,32 @@
                 <td style="background-color: #546E7A">{{$add->zip}}</td>
             </tr>
                    
-                <form action="{{route('classTo',$id = $add->id)}}" method="post">
-            
-                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                <button class="waves-effect waves-light btn center" type="submit" name="id" value="{{$add->id}}">Terem felvitele</button>
+              
              @endforeach 
-                </form>
+                
         </tbody>
     </table>
-
 
     <table>
         <thead>
             <tr style="background-color: #455a64 ">
-                <td>ID</td>
                 <td>Teremnév</td>
                 <td>Férőhely</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>                           
             
             @foreach($class as $ss)
             <tr>
-                <td style="background-color: #546E7A">{{$ss->id}}</td>
                 <td style="background-color: #546E7A">{{$ss->name}}</td>
                 <td style="background-color: #546E7A">{{$ss->space}}</td>
-                @endforeach
+                <td style="background-color: #546E7A">
+                <form action="{{route('classTo',$id = $ss->id)}}" method="get">
+                <button class="waves-effect waves-light btn" type="submit" name="id" value="{{$ss->id}}">{{trans('validation.edit')}}</button></form>
+                </td>
             </tr>
+                @endforeach
         </tbody>
     </table>
 @stop

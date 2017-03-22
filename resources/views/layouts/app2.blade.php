@@ -50,6 +50,7 @@
     @endif
 </head>
 <body background="/picture/3.jpg">
+
 @if (Auth::guest())
 @include('layouts.navbar2')
  @else

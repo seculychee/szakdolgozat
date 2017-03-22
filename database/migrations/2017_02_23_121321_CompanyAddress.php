@@ -16,7 +16,7 @@ class CompanyAddress extends Migration
         //company tábla létrehozás
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');            
+            $table->string('companyname');            
             $table->string('regnr');                    
             $table->string('baan');                    
             $table->string('taxnumber');                    

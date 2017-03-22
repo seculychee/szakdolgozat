@@ -17,7 +17,7 @@ class Address extends Model
 
     public function companys()
     {
-        return $this->belongsToMany('Company', 'company_addresses', 'address_id', 'company_id');
+        return $this->belongsToMany(Company::class, 'company_addresses', 'address_id', 'company_id');
     }
 
     public function classroom()

@@ -1,7 +1,8 @@
-@extends('app')
-
+@extends('layouts.app2')
 
 @section('content')
+
+
 
     @if (count($errors) > 0)
         <div class="container">
@@ -31,39 +32,39 @@
                     </div>
                     <div class="panel-body">
                         <div class="container">
-                            <form action="{{route('comp')}}" method="POST">
-
+                            @foreach($company as $comp)
+                            <form action="{{route('saveedit',$comp->id)}}" method="POST">
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="name" type="text" name="companyname" class="validate">
+                                        <input id="name" value="{{$comp->companyname}}" type="text" name="companyname" class="validate">
                                         <label for="name">{{trans("validation.name")}}</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="regnr" type="text" name="regnr" class="validate">
+                                        <input id="regnr" type="text" value="{{$comp->regnr}}" name="regnr" class="validate">
                                         <label for="regnr">{{trans("validation.regnr")}}</label>
                                     </div>
                                     {{-- TODO: baan kezelés--}}
                                     <div class="input-field col s6 ">
-                                        <input id="baan" type="text" name="baan" class="validate">
+                                        <input id="baan" type="text" value="{{$comp->baan}}" name="baan" class="validate">
                                         <label for="baan">{{trans("validation.baan")}}</label>
                                     </div>
                                       <div class="input-field col s6 ">
-                                        <input id="taxnumber" type="text" name="taxnumber" class="validate">
+                                        <input id="taxnumber" type="text" value="{{$comp->taxnumber}}" name="taxnumber" class="validate">
                                         <label for="taxnumber">{{trans("validation.taxnumber")}}</label>
                                     </div>
                                     {{-- ########## --}}
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="city" type="text" name="city" class="validate">
+                                        <input id="city" type="text" value="{{$comp->sites->first()->city}}" name="city" class="validate">
                                         <label for="city">{{trans("validation.city")}}</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="zip" type="text" name="zip" class="validate">
+                                        <input id="zip" type="text" value="{{$comp->sites->first()->zip}}" name="zip" class="validate">
                                         <label for="zip">{{trans("validation.zip")}}</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="address" type="text" name="address" class="validate">
+                                        <input id="address" type="text" value="{{$comp->sites->first()->address}}" name="address" class="validate">
                                         <label for="address">{{trans("validation.address")}}</label>
                                     </div>
                                 </div>
@@ -86,19 +87,9 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="input-field col s6">
-                                        <input id="class" type="text" name="name" class="validate">
-                                        <label for="class">{{trans("validation.nameClass")}}</label>
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <input id="space" type="number" name="space" class="validate">
-                                        <label for="space">{{trans("validation.space")}}</label>
-                                    </div>
-                                </div>
+                                @endforeach
                                 <input type="hidden" name="_token" value="{{csrf_token()}}"><br>
-                                <a class="waves-effect waves-light btn center"><input type="submit" name="submit"
-                                                                               value="{{trans("validation.save")}}"></a>
+                                <a class="waves-effect waves-light btn center"><input type="submit" name="submit" value="{{trans("validation.save")}}"></a>
                             </form>
                         </div>
                     </div>

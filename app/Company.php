@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-	protected $fillable = ['name', 'regnr', 'baan','taxnumber','language_id', 'companytype_id' ];
+	protected $fillable = ['companyname', 'regnr', 'baan','taxnumber','language_id', 'companytype_id' ];
        
     public function sites()
     {
@@ -17,11 +17,11 @@ class Company extends Model
     {
         return $this->hasMany(CompanyAddress::class);
     }
-        public function CompanyType()
+        public function companytype()
     {
         return $this->belongsTo(CompanyType::class);
     }
-    public function Language()
+    public function language()
     {
         return $this->belongsTo(Language::class);
     }

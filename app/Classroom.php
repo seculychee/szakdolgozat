@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classroom extends Model
 {
-    protected $fillable = ['name', 'space' ];
+    protected $fillable = ['name','space'];
 
     public function classadd()
     {
