@@ -36,20 +36,19 @@
     @if (Auth::guest())
 @else
  @if (Auth::check())
-                            @role('admin')
-                            <li><a href="{{ url('/role_permission') }}">{{trans("navbar.rolePermission")}}</a></li>
-                            <li><a href="{{ URL::route('roles.index') }}">{{trans("navbar.roles")}}</a></li>
-                            <li><a href="{{ URL::route('permissions.index') }}">{{trans("navbar.permission")}}</a></li>
-                           <li><a href="{{ URL::route('users.index') }}">{{trans("navbar.users")}}</a></li>
-                           <li><a href="../company">{{trans("navbar.company")}}</a></li>
-                           <li><a href="../coachLesson">{{trans("navbar.coachLesson")}}</a></li>
-                            @endrole
-                            @role('editor')
-                            <li><a href="../books">{{trans("navbar.lessons")}}</a></li>
-                            <li><a href="../coachLesson">{{trans("navbar.coachLesson")}}</a></li>
-                            @endrole
-                            <li><a href="{{route('userbooks')}}">{{trans("navbar.books")}}</a></li>
-                             
+           @role('admin')
+           <li><a href="{{ url('/role_permission') }}">{{trans("navbar.rolePermission")}}</a></li>
+           <li><a href="{{ URL::route('roles.index') }}">{{trans("navbar.roles")}}</a></li>
+           <li><a href="{{ URL::route('permissions.index') }}">{{trans("navbar.permission")}}</a></li>
+          <li><a href="{{ URL::route('users.index') }}">{{trans("navbar.users")}}</a></li>
+          <li><a href="company">{{trans("navbar.company")}}</a></li>
+           @endrole
+           @role('editor')
+           <li><a href="books">{{trans("navbar.books")}}</a></li>
+           <li><a href="coachLesson">{{trans("navbar.coachLesson")}}</a></li>
+           @endrole
+            <li><a href="{{route('userbooks')}}">{{trans("navbar.lessons")}}</a></li>
+
 
                     @endif
                     <li><a href="/home">Adatlap</a></li>

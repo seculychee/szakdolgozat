@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -12,7 +12,12 @@
             </ul>
         </div>
     @endif
-
+    <div class="valign-wrapper">
+        <div class="row">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title ">Szabály Létrehozása</span>
+                    <div class="row">
     {!! Form::open(['route' => 'permissions.store']) !!}
 
     <div class="input-field col s12">
@@ -40,4 +45,9 @@
     </div>
 
     {!! Form::close() !!}
+      </div>
+</div>
+</div>
+</div>
+</div>
 @stop

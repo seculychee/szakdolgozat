@@ -23,18 +23,17 @@
                 <th>{{trans("books.lessonClass")}}</th>
                 <th></th>
             </tr>
+
+
             </thead>
             <tbody>
-
             @foreach($books as $room)
+              @if($room->user != Auth::user()->email)
                 <tr style="background-color: #546E7A">
                     <td>{{$room->user}}</td>
                     <td>{{$room->date}}</td>
                     <td>{{$room->terem->classadd->first()->city}},{{$room->terem->classadd->first()->address}}</td>
                     <td></td>
-                    {{--  <td></td>
-                      <td>{{$room->terem->classadd->city}},{{$room->terem->classadd->address}}</td>
-                      <td>{{$room->terem->name}}</td>--}}
                     <td>
                         @if($room->userto->find(Auth::user()->id))
                             <p class="white-text">Ide már feliratkoztál</p>
@@ -46,6 +45,7 @@
                         @endif
                     </td>
                 </tr>
+              @endif
             @endforeach
             </tbody>
         </table>

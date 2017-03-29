@@ -17,39 +17,40 @@ class BooksClassrooms extends Migration
         Schema::create('address_classrooms', function (Blueprint $table) {
             $table->increments('id');
             //$table->string('name');
-            $table->integer('address_id');            
-                $table->index('address_id');            
-            $table->integer('classroom_id');                    
-                $table->index('classroom_id');                    
+            $table->integer('address_id');
+                $table->index('address_id');
+            $table->integer('classroom_id');
+                $table->index('classroom_id');
             $table->timestamps();
         });
 
         // classroom -> terem név, férőhely
         Schema::create('classrooms', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');            
-            $table->integer('space');                                      
+            $table->string('name');
+            $table->integer('space');
             $table->timestamps();
         });
 
-        // books -> foglalások 
+        // books -> foglalások
         //tartalma: id, datetime, classroom_id
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('date');            
+            $table->string('date');
             $table->string('user');
             $table->integer('classroom_id');
             $table->timestamps();
         });
 
-        // user + foglalás összekapcsolás itt törénik majd az összeszámolás hányan jelentkeztek melyik órára 
+        // user + foglalás összekapcsolás itt törénik majd az összeszámolás hányan jelentkeztek melyik órára
         Schema::create('user_books', function (Blueprint $table) {
             $table->increments('id');
             //$table->string('name');
-            $table->integer('user_id');            
-                $table->index('user_id');            
-            $table->integer('book_id');                    
-                $table->index('book_id');                    
+            $table->integer('user_id');
+                $table->index('user_id');
+            $table->integer('book_id');
+                $table->index('book_id');
+                $table->string('participate');                   
             $table->timestamps();
         });
 

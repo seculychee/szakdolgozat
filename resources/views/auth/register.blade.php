@@ -48,24 +48,34 @@
       </div>
 
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s4">
           <input id="firstname" type="text" name="firstname" class="validate">
           <label for="firstname">{{trans("validation.firstname")}}</label>
         </div>
-        <div class="input-field col s6">
+        <div class="input-field col s4">
           <input id="lastname" type="text" name="lastname" class="validate">
           <label for="lastname">{{trans("validation.lastname")}}</label>
+        </div>
+          <div class="input-field col s4">
+          <input id="phonenumber" type="number" name="phonenumber" class="validate">
+          <label for="phonenumber">{{trans("registration.Phone")}}</label>
         </div>
       </div>
 
                             <div class="input-field col s12">
-                              <select class="browser-default" name="languageid">
+                              <select class="browser-default" name="language_id">
                           <option value="" disabled selected>Válasszon nyelvet</option>
                           @foreach($data as $s)
                             <option value="{{$s->id}}">{{$s->displayName}}</option>
                           @endforeach
                               </select>
                             </div>
+        <div class="row">
+        <div class="input-field col s12">
+          <input id="country" type="text" name="country" class="validate">
+          <label for="country">{{trans("validation.country")}}</label>
+        </div>
+        </div>
             <div class="row">
         <div class="input-field col s4">
           <input id="city" type="text" name="city" class="validate">

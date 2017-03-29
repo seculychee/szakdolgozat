@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -17,6 +17,9 @@
 
 @endif
 
+
+
+
     <table class="bordered">
         <thead>
             <tr style="background-color: #78909C ">
@@ -31,9 +34,9 @@
                 <td></td>
             </tr>
         </thead>
-        <tbody>   
-            @foreach($company as $companys)
+        <tbody>
 
+@foreach($company as $companys)
             <tr>
                 <td style="background-color: #90A4AE">{{$companys->id}}</td>
                 <td style="background-color: #90A4AE">{{$companys->companyname}}</td>
@@ -42,11 +45,10 @@
                 <td style="background-color: #90A4AE">{{$companys->taxnumber}}</td>
                 <td style="background-color: #90A4AE">{{$companys->language->displayName}}</td>
                 <td style="background-color: #90A4AE">{{$companys->companytype->name}}</td>
-                
                 <td style="background-color: #90A4AE">
                 <form action="{{route('getdata',$id = $companys->id)}}" method="get">
                 <button class="waves-effect waves-light btn center" type="submit" name="id" value="{{$companys->id}}">Adatok</button>
-                </form>                
+                </form>
                 </td >
                 <td style="background-color: #90A4AE"><form class="center" action="{{route('getedit',$id = $companys->id)}}" method="get">
                 <button class="waves-effect waves-light btn center" type="submit" name="id" value="{{$companys->id}}">Szekesztés</button>
@@ -56,14 +58,16 @@
                 </form>
                 </td>
             </tr>
-            @endforeach     
-   
-            
-              
+
+          @endforeach
 
 
-       
+
+
+
+
         </tbody>
     </table>
+
 
 @stop

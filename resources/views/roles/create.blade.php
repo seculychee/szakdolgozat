@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -16,11 +16,16 @@
                                     </div>
                                   </div>
                                  </div>
-                
+
             </ul>
         </div>
     @endif
-
+    <div class="valign-wrapper">
+        <div class="row">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Szabály szerkesztés</span>
+                    <div class="row">
     {!! Form::open(['route' => 'roles.store']) !!}
 
     <div class="input-field inline">
@@ -46,10 +51,10 @@
     <div class="form-group">
         <label for="">Permissions</label>
         @foreach($permissions as $permission)
-            <div class="checkbox">
-                <label>
-                    {!! Form::checkbox('perms[]', $permission->id) !!} {{ $permission->display_name }}
-                </label>
+            <div class="row">
+
+                    {!! Form::checkbox('perms[]', $permission->id) !!}
+                <label>{{ $permission->display_name }}</label>
             </div>
         @endforeach
     </div>
@@ -59,4 +64,9 @@
     </div>
 
     {!! Form::close() !!}
+  </div>
+</div>
+</div>
+</div>
+</div>
 @stop

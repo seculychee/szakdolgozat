@@ -16,9 +16,10 @@ class UserAddress extends Migration
         //contact table -> firstname, lastname
        Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstname');            
-            $table->string('lastname');                    
-            $table->integer('language_id');                    
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->integer('phonenumber');
+            $table->integer('language_id');
             $table->timestamps();
         });
 
@@ -26,30 +27,31 @@ class UserAddress extends Migration
        Schema::create('user_contacts', function (Blueprint $table) {
             $table->increments('id');
             //$table->string('name');
-            $table->integer('user_id');            
-                $table->index('user_id');            
-            $table->integer('contact_id');                    
-                $table->index('contact_id');                    
+            $table->integer('user_id');
+                $table->index('user_id');
+            $table->integer('contact_id');
+                $table->index('contact_id');
             $table->timestamps();
         });
 
         //adress table -> address city zip countryCode
-       Schema::create('adresses', function (Blueprint $table) {
+       Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('address');            
-            $table->string('city');                    
-            $table->integer('zip');                    
-            //$table->integer('countryCode');                    
+            $table->string('address');
+            $table->string('city');
+            $table->integer('zip');
+            $table->string('country');                    
+            //$table->integer('countryCode');
             $table->timestamps();
         });
 
        //kapcsoló tábla users+address
-       Schema::create('adress_users', function (Blueprint $table) {
+       Schema::create('address_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');            
-                $table->index('user_id');            
-            $table->integer('address_id');                    
-                $table->index('address_id');                    
+            $table->integer('user_id');
+                $table->index('user_id');
+            $table->integer('address_id');
+                $table->index('address_id');
             $table->timestamps();
         });
     }

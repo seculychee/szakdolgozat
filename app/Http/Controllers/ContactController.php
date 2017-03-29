@@ -61,9 +61,10 @@ class ContactController extends Controller
                             ->withErrors($validation->errors()->all())
                             ->withInput();
          
+
         $user = $this->createUser($request->only('email','password'));
-        $contact = $this->createContact($request->only('firstname','lastname','languageid'));
-        $address = $this->createAddress($request->only('address','city','zip'));
+        $contact = $this->createContact($request->only('firstname','lastname','language_id','phonenumber'));
+        $address = $this->createAddress($request->only('address','city','zip','country'));
         UserContact::create([
             'user_id'            => $user->id,
             'contact_id'         => $contact->id,
@@ -73,7 +74,9 @@ class ContactController extends Controller
             'user_id'            => $user->id,
         ]);
 
-        return 'Elmentve';
+        $request->session()->reflash();
+        $request->session()->flash('success', 'Sikeres regisztráció!');
+        return redirect()->route('login');
     
     }
     public function createUser($dat){
@@ -138,8 +141,11 @@ class ContactController extends Controller
             'confirm' => 'required|same:password|min:2|max:255',
             'firstname' => 'required|min:2|max:50',
             'lastname' => 'required|min:2|max:50',
+            'phonenumber' => 'numeric|required|min:2',
+            'language_id' => 'required',
             'address' => 'required|min:2|max:50',
             'city' => 'required|min:4|max:50',
+            'country' => 'required|min:4|max:50',
             'zip' => 'numeric|required|min:2',
             ];
 
@@ -166,6 +172,10 @@ class ContactController extends Controller
             'lastname.min' => 'validation.lastNameMin',
             'lastname.max' => 'validation.lastNameMax',
 
+            'phonenumber.required' => 'validation.phonenumberRequired',
+            'phonenumber.min' => 'validation.phonenumberMin',
+            'phonenumber.numeric' => 'validation.phonenumberNumeric',
+
             'address.required' => 'validation.addressRequired',
             'address.min' => 'validation.addressMin',
             'address.max' => 'validation.addressMax',
@@ -178,6 +188,11 @@ class ContactController extends Controller
             'zip.min' => 'validation.zipMin',
             'zip.numeric' => 'validation.zipNumeric',
 
+            'country.required' => 'validation.countryRequired',
+            'country.min' => 'validation.countryMin',
+            'country.max' => 'validation.countryMax',
+
+            'language_id.required' => 'validation.languageRequired'
             ];
 
         /*

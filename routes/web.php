@@ -5,8 +5,8 @@
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Teljes irányító központ. Itt zajlanak le a get,post,put,resource  
-| kérések parancsai amik a címsorban jelennek meg. A laravel ezeket a kéréseket 
+| Teljes irányító központ. Itt zajlanak le a get,post,put,resource
+| kérések parancsai amik a címsorban jelennek meg. A laravel ezeket a kéréseket
 | dolgozza fel és kezeli le a Controlleren keresztül.
 |
 */
@@ -24,13 +24,14 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 });
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['prefix' => 'admin','middleware' => ['role:admin']], function(){
+
     Route::resource('users', 'UsersController');
     Route::resource('roles', 'RolesController');
-    Route::resource('permissions', 'PermissionsController');    
+    Route::resource('permissions', 'PermissionsController');
     Route::get('/role_permission', 'RolesPermissionsController@index');
     Route::post('/role_permission', 'RolesPermissionsController@store');
-    // Cégkezelés 
+    // Cégkezelés
     Route::get('company', 'CompanyController@index')->name('company');
     Route::get('companyAdd', 'CompanyController@create')->name('getCompAdd');
     Route::post('companyStore', 'CompanyController@store')->name('comp');
@@ -38,60 +39,46 @@ Route::group(['middleware' => ['auth']], function(){
     //szerkesztés , törlés
     Route::get('companyUpdate/{id}', 'CompanyController@edit')->name('getedit');
     Route::post('companyeupd/{id}', 'CompanyController@update')->name('saveedit');
-    Route::post('companyedelete/{id}', 'CompanyController@destroy')->name('compdelete');
+    Route::get('companydelete/{id}', 'CompanyController@destroy')->name('compdelete');
 
     //Terem kezelés
     Route::put('classAdd/{id}', 'CompanyController@classAdd')->name('classAdd');
     //szerkesztés , törlés
     Route::get('class/{id}', 'CompanyController@classTo')->name('classTo');
     Route::post('classupdate/{id}', 'CompanyController@classupdate')->name('classupdate');
+    Route::get('classdelete/{id}', 'CompanyController@classdestroy')->name('classdelete');
+});
 
 
+
+Route::group(['prefix' => 'editor','middleware' => ['role:editor']], function(){
     //Foglalás kezelések
-    Route::get('books', 'BookController@index');
+    Route::get('books', 'BookController@index')->name('books');
     Route::get('booksAdd/{id}', 'BookController@create')->name('booksadd');
     Route::post('booksPlus', 'BookController@store')->name('booksplus');
 
     //Felhasználó foglalás kezelések
-    Route::get('allbooks', 'BookController@userbook')->name('userbooks');
+    //megjelentek kezelése
+    Route::get('userinbook/{id}', 'BookController@userinbook')->name('userinbook');
+    Route::post('participate/{id}', 'BookController@participate')->name('participate');
+    //edző órák kezelése
     Route::get('coachLesson', 'BookController@coachlesson')->name('coach');
+    Route::get('coachLessonedit/{id}', 'BookController@coachlessonupdate')->name('editbook');
+    Route::post('coachLessonupd/{id}', 'BookController@update')->name('updatebook');
+    Route::get('coachLessonupd/{id}', 'BookController@coachlessonupdate')->name('updatebook');
+    Route::get('coachLessondelete/{id}', 'BookController@destroy')->name('deletebook');
+});
 
-    
     //órára jelentkezés
+    Route::get('allbooks', 'BookController@userbook')->name('userbooks');
     Route::post('lessongo/{id}', 'BookController@usertolesson')->name('lessonstart');
 
 
 
-});
+
+
+
+
 Route::get('regist', 'ContactController@index');
-Route::post("store", 'ContactController@store')->name('reg'); 
-    /*Route::get('companyData/{company}', function($company){
+Route::post("store", 'ContactController@store')->name('reg');
 
-        $company = Company::find($data)->sites()->get();
-        dd($company);
-        return View::make('notes.main')
-        ->with('destinations', $destinations);
-});*/
-
-/*
-//tesztelések
-Route::get("create", 'testing@index');
-Route::post("store", 'testing@store');
-
-Route::resource('itemCRUD','ItemCRUDController');
-
-Route::get('result', 'ScoreController@result');
-Route::post("store", 'ScoreController@store');*/
-
-            //regsiztráció irányítás
-
-/*
-    Route::group(['prefix' => 'admin'], function () {
-    	Route::resource('/user', 'UserController');
-    	Route::resource('/post', 'PostController');
-    });*/
-/*
-Route::get('one', function () {
-    return view('pages.one');
-});
-*/

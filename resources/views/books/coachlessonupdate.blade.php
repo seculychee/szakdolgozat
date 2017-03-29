@@ -44,20 +44,21 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" style="background-color: #546e7a">
                 <div class="panel-heading "><div class="divider"></div>
-  <div class="section"> @foreach($class as $room)
+  <div class="section"> @foreach($classr as $room)
     <h5 class="text-center white-text center">{{trans('validation.nameClass')}}: {{$room->name}}</h5>
   </div></div>
                   <div class="panel-body">
                     <div class="container">
+                      @foreach ($books as $book)
 
-                        <form action="{{route('booksplus')}}" method="post">
+                        <form action="{{route('updatebook',$book->id)}}" method="post">
 
                           <div class="row">
 
                                     <div layout-gt-md="row" layout="column" layout-align-gt-md="center center" style="background-color: #546E7A>
                                    <md-input-container flex-gt-md="30">
                                   <label>{{trans("books.date")}}</label>
-                                  <input mdc-datetime-picker date="true" time="true" type="text" name="date" id="datetime"
+                                  <input mdc-datetime-picker date="true" time="true" value="{{$book->date}}" type="text" name="date" id="datetime"
                                   placeholder="Kattintson ide" show-todays-date
                                   min-date="date"
                                   ng-model="dateTime"  ">
@@ -67,6 +68,7 @@
                                 <input type="hidden" name="user" value="{{Auth::user()->email}}">
                                 @endif
                           <input type="hidden" name="classroom_id" value="{{$room->id}}">
+                        @endforeach
                           @endforeach
                           <div class="row center">
                           <input type="hidden" name="_token" value="{{csrf_token()}}"><br>

@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -12,7 +12,12 @@
             </ul>
         </div>
     @endif
-
+    <div class="valign-wrapper">
+        <div class="row">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Jogosultság szerkesztés</span>
+                    <div class="row">
     {!! Form::model($role, ['route' => ['roles.update', $role->id], 'method' => 'PATCH']) !!}
 
     <div class="input-field col s12">
@@ -36,15 +41,17 @@
         {!! Form::hidden('level', $role->level) !!}
     </div>
 
-    <div class="input-field col s12">
-        <label for="">Permissions</label>
+
+      Permission
+    
         @foreach($permissions as $permission)
             <?php $checked = in_array($permission->id, $rolePerms->pluck('id') ->toArray()); ?>
-                <div class="checkbox">
-                    <label>
-                        {!! Form::checkbox('perms[]', $permission->id, $checked) !!} {{ $permission->display_name }}
-                    </label>
+                <div class="row">
+
+                        {!! Form::checkbox('perms[]', $permission->id, $checked) !!}
+                    <label>{{ $permission->display_name }}</label>
                 </div>
+
         @endforeach
     </div>
 
@@ -53,4 +60,9 @@
     </div>
 
     {!! Form::close() !!}
+  </div>
+</div>
+</div>
+</div>
+</div>
 @stop

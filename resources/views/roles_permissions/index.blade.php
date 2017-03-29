@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
     {!! Form::open(['url' => '/role_permission']) !!}

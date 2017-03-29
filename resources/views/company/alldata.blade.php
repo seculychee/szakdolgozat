@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
 @section('content')
   @if ( Session::has('success') )
@@ -27,7 +27,7 @@
         @foreach($errors->all() as $error)
           <li>{{trans($error)}}</li>
           @endforeach
-        </ul>  
+        </ul>
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@
                     <div class="container">
                     @foreach($address as $s)
                        <form action="{{route('classAdd',$id = $add->id)}}" method="POST">
-                          
+
                           <div class="row">
                             <div class="input-field col s6">
                               <input id="name" type="text" name="name" class="validate">
@@ -60,9 +60,9 @@
                               <label for="space">{{trans("validation.space")}}</label>
                             </div>
 
-                            
+
                            <input type="hidden" name="_method" value="PUT">
-                          <input type="hidden" name="_token" value="{{csrf_token()}}"><br>                   
+                          <input type="hidden" name="_token" value="{{csrf_token()}}"><br>
                         <a class="waves-effect waves-light btn"><input type="submit" name="submit" value="{{trans("validation.save")}}"></a>
                         @endforeach
                      </form>
@@ -86,9 +86,9 @@
                 <td>Zip</td>
             </tr>
         </thead>
-        <tbody>                           
-            
-            
+        <tbody>
+
+
             <tr>
                 <td style="background-color: #546E7A">{{$com->companyname}}</td>
                 <td style="background-color: #546E7A">{{$com->regnr}}</td>
@@ -100,10 +100,10 @@
                 <td style="background-color: #546E7A">{{$add->address}}</td>
                 <td style="background-color: #546E7A">{{$add->zip}}</td>
             </tr>
-                   
-              
-             @endforeach 
-                
+
+
+             @endforeach
+
         </tbody>
     </table>
 
@@ -113,18 +113,24 @@
                 <td>Teremnév</td>
                 <td>Férőhely</td>
                 <td></td>
+                <td></td>
             </tr>
         </thead>
-        <tbody>                           
-            
+        <tbody>
+
             @foreach($class as $ss)
-            <tr>
+            <tr style="background-color: #455a64 ">
                 <td style="background-color: #546E7A">{{$ss->name}}</td>
                 <td style="background-color: #546E7A">{{$ss->space}}</td>
                 <td style="background-color: #546E7A">
                 <form action="{{route('classTo',$id = $ss->id)}}" method="get">
                 <button class="waves-effect waves-light btn" type="submit" name="id" value="{{$ss->id}}">{{trans('validation.edit')}}</button></form>
                 </td>
+              <td style="background-color: #546E7A">
+                <form action="{{route('classdelete',$id = $ss->id)}} " method="get">
+                <button class="waves-effect waves-light btn center" type="submit" name="id" value="{{$ss->id}}">Törlés</button>
+                </form>
+              </td>
             </tr>
                 @endforeach
         </tbody>

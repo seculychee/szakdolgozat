@@ -31,9 +31,9 @@ return array (
     'zip'        => 'Irányítószám',
     'zipRequired'        => 'Az irányítószám kitöltése kötelező',
     'zipMin'             => 'Az irányítószám hosszabbnak kell lennie 2 karakternél',
-    'zipMax'             => 'Az irányítószám nem lehet hosszabb 50 karakternél', 
-    'zipNumeric'             => 'Az irányítószám csak szám lehet', 
-    
+    'zipMax'             => 'Az irányítószám nem lehet hosszabb 50 karakternél',
+    'zipNumeric'             => 'Az irányítószám csak szám lehet',
+
     'password'        => 'Jelszó',
     'passwordconf'        => 'Jelszó újra',
     'passwordRequired'        => 'Jelszó kitöltése kötelező',
@@ -76,14 +76,24 @@ return array (
     'classMax' => 'Maximum 50 karakter lehet a Teremnév!',
     'chooseLanguage' => 'Válasszon nyelvet',
     'chooseCompanytype' => 'Válasszon cégtípust',
+
     'save' => 'Felvitel',
     'edit' => 'Szerkesztés',
     'classedit' => 'Terem szerkesztése',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
+    'patitional' => 'Résztvevők',
+    
+    'phonenumber'        => 'Telefonszám',
+    'phonenumberRequired'        => 'Az telefonszám kitöltése kötelező',
+    'phonenumberMin'             => 'Az telefonszám hosszabbnak kell lennie 2 karakternél',
+    'phonenumberMax'             => 'Az telefonszám nem lehet hosszabb 50 karakternél',
+    'phonenumberNumeric'             => 'Az telefonszám csak szám lehet',
+
+    'country'        => 'Ország',
+    'countryRequired'        => 'Ország kitöltése kötelező',
+    'countryMin'             => 'Ország hosszabbnak kell lennie 2 karakternél',
+    'countryMax'             => 'Ország nem lehet hosszabb 50 karakternél',
+    
+    'languageRequired' => 'Válasszon nyelvet!',
     '' => '',
     '' => '',
     '' => '',

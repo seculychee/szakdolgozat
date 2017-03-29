@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -12,7 +12,12 @@
             </ul>
         </div>
     @endif
-
+    <div class="valign-wrapper">
+        <div class="row">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Szabály szerkesztés</span>
+                    <div class="row">
     {!! Form::model($permission, ['route' => ['permissions.update', $permission->id], 'method' => 'PATCH']) !!}
 
     <div class="input-field col s12">
@@ -35,9 +40,14 @@
         {!! Form::text('route', null, ['class' => 'validate']) !!}
     </div>
 
-    <div class="input-field col s12">
+    <div class="form-group">
         {!! Form::submit('Módosítás', ['class' => 'waves-effect waves-light btn']) !!}
     </div>
-
     {!! Form::close() !!}
+
+  </div>
+</div>
+</div>
+</div>
+</div>
 @stop

@@ -25,7 +25,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        
+
         $company = Company::all();
         return view('books.index')->with('company', $company);
 
@@ -38,7 +38,7 @@ class BookController extends Controller
      */
     public function create($id)
     {
-        $class = Classroom::where('id', $id)->get(); 
+        $class = Classroom::where('id', $id)->get();
        return view('books.create')->with('class',$class);
     }
 
@@ -51,7 +51,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
       /* $validat = $this->valid($request->all());
-         if ($validat->fails()) 
+         if ($validat->fails())
              return redirect('/companyAdd')
                             ->withErrors($validat->errors()->all())
                             ->withInput();*/
@@ -59,7 +59,10 @@ class BookController extends Controller
     /*     TODO : User hozzárendelése a táblához         */
 
         $book = $this->createBook($request->only('date','classroom_id','user'));
-        return 'Elmentve';
+        $request->session()->reflash();
+
+        $request->session()->flash('success', 'Sikeres óra felvétel!');
+        return redirect('/editor/books');
     }
     public function createBook($dat){
         return $book = Book::create($dat);
@@ -81,21 +84,25 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+     public function coachlessonupdate($id)
+     {
+         $books = Book::where('id',$id)->get();
+        //$classr = Book::find($id)->terem()->get();
+        $classr;
+        foreach ($books as $book) {
+          $classr = Classroom::where('id',$book->classroom_id)->get();
+        }
+         return view('books.coachlessonupdate')->with('classr',$classr)
+                                               ->with('books',$books);
+     }
     public function update(Request $request, $id)
     {
-        //
+          $company = Book::where('id',$id)->update($request->only('date','classroom_id'));
+          $request->session()->reflash();
+
+          $request->session()->flash('success', 'Óra módosítva!');
+          return redirect()->route('coach');
     }
 
     /**
@@ -106,17 +113,30 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }    
+      try {
+        $booksuser = Book::find($id)->userto()->delete();
+        $books = Book::where('id',$id)->delete();
+
+      } catch (Exception $e) {
+        $books = Book::where('id',$id)->delete();
+
+      }
+
+
+        return redirect()->back();
+
+
+
+    }
     public function userbook()
     {
         $books = Book::all();
         $userbooks = UserBook::all();
-       
+
 
         return view('books.userbook')->with('books',$books)
                                      ->with('userbooks',$userbooks);
-    }    
+    }
     public function usertolesson($id)
     {
         $userid = Auth::user()->id;
@@ -131,6 +151,27 @@ class BookController extends Controller
     {
         $books = Classroom::all();
         return view('books.coachlesson')->with('books',$books);
+    }
+
+    public function coachlessondelete()
+    {
+        $books = Classroom::all();
+        return view('books.coachlesson')->with('books',$books);
+    }
+
+    public function userinbook($id)
+    {
+        $books = UserBook::where('book_id',$id)->get();
+        return view('books.userinbook')->with('books',$books);
+    }
+
+    public function participate(Request $request, $id)
+    {
+        $books = UserBook::where('id',$id)->update($request->only('participate'));
+        $request->session()->reflash();
+
+        $request->session()->flash('success', 'Megjelenés elmentve!');
+        return redirect()->back();
     }
 
 }

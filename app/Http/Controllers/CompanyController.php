@@ -10,6 +10,7 @@ use App\Classroom;
 use App\Company as Company;
 use App\CompanyAddress;
 use App\Language;
+use App\Book;
 use App\Http\Requests;
 use Validator;
 
@@ -40,14 +41,14 @@ class CompanyController extends Controller
     public function create()
     {
         /**
-        * Lekérdez: CompanyType és Language modelleket, majd továbbítja 
-        * a view\company\create.blade.php-ra 
+        * Lekérdez: CompanyType és Language modelleket, majd továbbítja
+        * a view\company\create.blade.php-ra
         */
         $data = CompanyType::all();
         $dataa = Language::all();
         return view('company.create')->with('data', $data)
                                      ->with('dataa', $dataa);
-       
+
     }
 
     /**
@@ -59,29 +60,29 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         /**
-        * Cégregisztrálásnál validáció indítása, 
+        * Cégregisztrálásnál validáció indítása,
         * valid függvényre ugrás.
         */
          $validat = $this->valid($request->all());
-         if ($validat->fails()) 
-             return redirect('/companyAdd')
+         if ($validat->fails())
+             return redirect()->route('getCompAdd')
                             ->withErrors($validat->errors()->all())
                             ->withInput();
-         
+
         /**
         * Ha a validáció sikeresen hiba nélkül lezajlott, akkor adatok felvitele
-        * Változókba felvétel a feltöltött adatokat, amiket átadunk a 
-        * hozzátartozó create* -függvényhez 
+        * Változókba felvétel a feltöltött adatokat, amiket átadunk a
+        * hozzátartozó create* -függvényhez
         * Az itt létrejött id-ket a kapcsoló táblákba töltjük ezzel létrehozva a
         * táblák közti adatkapcsolatot.
         */
-        
+
         $company = $this->createCompany($request->only('companyname','regnr','baan','taxnumber','companytype_id','language_id'));
         $address = $this->createAddress($request->only('address','city','zip'));
-   
+
         $classroom = $this->createClassroom($request->only('name','space'));
 
-        // itt töltjük fel a kapcsoló tábla elemeit 
+        // itt töltjük fel a kapcsoló tábla elemeit
         AddressClassroom::create([
             'address_id'            => $address->id,
             'classroom_id'         => $classroom->id,
@@ -95,7 +96,7 @@ class CompanyController extends Controller
         $request->session()->flash('success', 'Sikeres felvitel!');
         return redirect()->route('company');
 
-    
+
     }
     public function createCompany($dat){
         return $company = Company::create($dat);
@@ -104,13 +105,13 @@ class CompanyController extends Controller
         return $address = Address::create($dat);
     }
     public function createClassroom($dat){
-       
+
         return $classroom = Classroom::create($dat);
     }
     protected function valid(array $data)
     {
         // Validációs elemek a felvett input mezőkre.
-        // $rule -> milyen szabályok legyenek érvényesek 
+        // $rule -> milyen szabályok legyenek érvényesek
             $rule = [
             'companyname' => 'required|min:2|max:50',
             'regnr' => 'required|numeric|min:2',
@@ -122,8 +123,8 @@ class CompanyController extends Controller
             'name' => 'required|min:4|max:50',
             'space' => 'numeric|required|min:2',
             ];
-        // a szabályokhoz tartozó hiba üzenetek 
-            // ezeket nyelvi fájlokból olvas ki 
+        // a szabályokhoz tartozó hiba üzenetek
+            // ezeket nyelvi fájlokból olvas ki
             $message = [
 
             'companyname.required' => 'validation.companyNameRequired',
@@ -156,7 +157,7 @@ class CompanyController extends Controller
 
             'name.required' => 'validation.classRequired',
             'name.min' => 'validation.classMin',
-            'name.max' => 'validation.classMax',            
+            'name.max' => 'validation.classMax',
 
             'space.required' => 'validation.spaceRequired',
             'space.min' => 'validation.spaceMin',
@@ -208,28 +209,29 @@ class CompanyController extends Controller
     {
 
         $validat = $this->validater($request->all());
-         if ($validat->fails()) 
+         if ($validat->fails())
              return redirect(route('getedit',$id))
                             ->withErrors($validat->errors()->all())
                             ->withInput();
-
-        $company = Company::where('id',$id)->update($request->only('companyname','regnr','baan','taxnumber','companytype_id','language_id'));    
+            # a validáció lezjlása után módositás
+        $company = Company::where('id',$id)->update($request->only('companyname','regnr','baan','taxnumber','companytype_id','language_id'));
+            # kikeresi a hozzátartózó címet a cim táblából kapcsoló táblán keresztül amit utánna módosít
         $address = Company::find($id)->sites()->get();
         foreach ($address as $add) {
             $addresses = Address::where('id',$add->id)->update($request->only('address','city','zip'));
         }
-        
+
         $request->session()->reflash();
 
         $request->session()->flash('success', 'Sikeres módosítás!');
         return redirect()->route('company');
     }
-    
+
 
     protected function validater(array $data)
     {
         // Validációs elemek a felvett input mezőkre.
-        // $rule -> milyen szabályok legyenek érvényesek 
+        // $rule -> milyen szabályok legyenek érvényesek
             $rule = [
             'companyname' => 'required|min:2|max:50',
             'regnr' => 'required|numeric|min:2',
@@ -238,10 +240,10 @@ class CompanyController extends Controller
             'address' => 'required|min:2|max:50',
             'city' => 'required|min:4|max:50',
             'zip' => 'numeric|required|min:2',
-         
+
             ];
-        // a szabályokhoz tartozó hiba üzenetek 
-        // ezeket nyelvi fájlokból olvas ki 
+        // a szabályokhoz tartozó hiba üzenetek
+        // ezeket nyelvi fájlokból olvas ki
             $message = [
 
             'companyname.required' => 'validation.companyNameRequired',
@@ -285,9 +287,50 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //--------------------Fejlesztés alatt---------------------//
-           // $this->company->delete($id);
-        //return redirect('/company');
+      $company = Company::where('id',$id)->get();
+      # lekérdezem a companyhoz tartozó címet
+      $comp = Company::find($id)->sites()->get();
+      foreach ($comp as $com) {
+        # lekérdezem a címhez tartozó osztályt
+          $address = Address::find($com->id)->classroom()->get();
+          foreach ($address as $add) {
+              # foglalás kikeresése ahol egyezik a teremszám a teremmel
+              $books = Book::where('classroom_id', $add->id)->get();
+
+              if ($books != null) {
+                  foreach ($books as $book) {
+
+                # kikeresem hogy van e foglalás az felvitt foglalások között és törlés detach-al
+                $userbook = Book::find($book->id)->userto()->detach();
+                  }
+              }
+                #törlés ahol a classroom_id egyezik
+                $books = Book::where('classroom_id', $add->id)->delete();
+          }
+          # terem törlés
+          $address = Address::find($com->id)->classroom()->delete();
+          # terem kapcsoló törlés
+          $address = Address::find($com->id)->classroom()->detach();
+      }
+      # cím törlés
+        Company::find($id)->sites()->delete();
+      # cím kapcsoló törlés
+        Company::find($id)->sites()->detach();
+      # cég törlés
+        Company::where('id',$id)->delete();
+        $request->session()->reflash();
+
+        $request->session()->flash('success', 'Cég törölve!');
+        return redirect()->route('company');
+    }
+    public function classdestroy($id)
+    {
+
+      # lekérdezem a companyhoz tartozó címet
+      $address = Classroom::find($id)->classadd()->detach();
+      $comp = Classroom::where('id',$id)->delete();
+
+        return redirect()->back();
     }
 
      public function data($id)
@@ -297,12 +340,12 @@ class CompanyController extends Controller
         foreach ($address as $aaa) {
             $add = $aaa->id;
         }
-       
-        $compa = Company::where('id', $id)->get(); 
-        $class = Address::find($add)->classroom()->get();
-       
 
-        
+        $compa = Company::where('id', $id)->get();
+        $class = Address::find($add)->classroom()->get();
+
+
+
        return view('company.alldata')->with('address', $address)
                                      ->with('compa', $compa)
                                      ->with('class', $class);
@@ -320,21 +363,15 @@ class CompanyController extends Controller
     public function classAdd(Request $request, $id)
     {
 
-      
+
         $aaa;
         $validat = $this->validclass($request->all());
-         if ($validat->fails()) 
+         if ($validat->fails())
 
         //visszavezetjük a cégadatokig a kapcsolókon keresztül
             //visszairányítjuk a termekhez a hibákkal együtt
-        $address = Classroom::find($id)->classadd()->get();
-        foreach ($address as $add) {
-            $addresses = Company::where('id',$add->id)->get();
-            foreach ($addresses as $company) {
-                $aaa = $company->id;
-            }
-        }
-             return redirect()->route('getdata',$aaa)
+
+             return redirect()->back()
                             ->withErrors($validat->errors()->all())
                             ->withInput();
 
@@ -352,9 +389,9 @@ class CompanyController extends Controller
 
     public function classupdate(Request $request, $id)
     {
-        
+
         $validat = $this->validclass($request->all());
-         if ($validat->fails()) 
+         if ($validat->fails())
 
              return redirect()->route('classTo',$id)
                             ->withErrors($validat->errors()->all())
@@ -362,7 +399,7 @@ class CompanyController extends Controller
 
         //módosítja azt a sort amit lekérdeztünk a mezőkbe
         $classroom = Classroom::where('id',$id)->update($request->only('name','space'));
-        
+
 
         //visszavezetjük a cégadatokig a kapcsolókon keresztül
         $aaa;
@@ -382,17 +419,17 @@ class CompanyController extends Controller
     protected function validclass(array $data)
     {
         // Validációs elemek a felvett input mezőkre.
-        // $rule -> milyen szabályok legyenek érvényesek 
+        // $rule -> milyen szabályok legyenek érvényesek
             $rule = [
             'name' => 'required|min:4|max:50',
             'space' => 'numeric|required|min:2',
             ];
-        // a szabályokhoz tartozó hiba üzenetek 
-            // ezeket nyelvi fájlokból olvas ki 
+        // a szabályokhoz tartozó hiba üzenetek
+            // ezeket nyelvi fájlokból olvas ki
             $message = [
             'name.required' => 'validation.classRequired',
             'name.min' => 'validation.classMin',
-            'name.max' => 'validation.classMax',            
+            'name.max' => 'validation.classMax',
 
             'space.required' => 'validation.spaceRequired',
             'space.min' => 'validation.spaceMin',

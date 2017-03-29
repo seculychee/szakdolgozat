@@ -1,8 +1,8 @@
 <?php 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
-use App\Requests\CreateUserRequest;
-use App\Requests\UpdateUserRequest;
+
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\Criteria\User\UsersWithRoles;
 use App\Repositories\UserRepository as User;
 use App\Repositories\RoleRepository as Role;
@@ -84,7 +84,7 @@ class UsersController extends Controller {
 	 * @param $id
 	 * @param UpdateUserRequest $request
 	 */
-	public function update(UpdateUserRequest $request, $id)
+	public function update(Request $request, $id)
 	{
 		$user = $this->user->find($id);
 				$user->email = $request->get('name');
@@ -119,7 +119,7 @@ class UsersController extends Controller {
 
 		//Flash::success('Felhasználó törölve!');
 
-		return redirect('/users');
+		return redirect('/admin/users');
 	}
 
 }

@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
-    protected $table = "adresses";
-    protected $fillable = ['address', 'city', 'zip'];
+    protected $table = "addresses";
+    protected $fillable = ['address', 'city', 'zip', 'country'];
 
     public function userAddress()
     {
